@@ -1,0 +1,19 @@
+.home-feed{
+    width: 100%;
+}
+.home-feed .sections{
+    color: aqua;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.home-feed .sections .section-left,
+.home-feed .section-right{
+    width: 20%;
+}
+.home-feed .section-middle{
+    width: 60%;
+    background: yellowgreen;
+}
