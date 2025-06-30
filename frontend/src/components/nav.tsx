@@ -38,7 +38,10 @@ const Nav = () => {
         {name: 'Profile', to: '#', icon: <FaUser />},
     ]
 
-    if (!isLoggedin) return;
+    if (!isLoggedin){
+        return;
+    } else {
+    }
 
   return (
     <div className='nav'>

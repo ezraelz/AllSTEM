@@ -1,5 +1,7 @@
 .home-feed{
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 .home-feed .sections{
     color: aqua;
@@ -8,12 +10,32 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin-top: .3em;
+    gap: .5em;
 }
 .home-feed .sections .section-left,
 .home-feed .section-right{
     width: 20%;
+    height: 85vh;
+    border: 1px solid #fff;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
 }
 .home-feed .section-middle{
-    width: 60%;
-    background: yellowgreen;
+    width: 55%;
+    height: 85vh;
+    border: 1px solid #fff;
+    background-attachment: fixed;
+}
+.section-right .section-right-top{
+    width: 100%;
+    height: 10%;
+    color: aquamarine;
+    border: 1px solid #fff;
+}
+.section-right-bottom{
+    width: 100%;
+    height: 80%;
+    border: 1px solid #fff;
 }

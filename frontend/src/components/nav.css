@@ -4,6 +4,8 @@
     background: #2b3138; /* SlateGray */
     display: flex;
     justify-content: center;
+    box-shadow: 0 0 4px #3e3e3e;
+    z-index: 9999;
 }
 
 .navbar-container {
