@@ -1,8 +1,9 @@
 .home-post{
-    width: 95%;
+    width: 80%;
     height: 10%;
     color: black;
     padding-left: .2em;
+    margin-left: 2em;
 }
 .home-post .post-container form{
     display: flex;
@@ -12,8 +13,8 @@
     gap: 1em;
     padding: 2em;
     border-radius: .5em;
-    color: #fff;
-    background: linear-gradient(45deg, #204ee3, #546ddb, #3246f6);
+    color: #374777;
+    background: #fff;
     box-shadow: 0 0 8px #85aad4;
 }
 .home-post form .post-input{
@@ -21,11 +22,11 @@
     background: none;
     border: none;
     outline: none;
-    color: #fff;
+    color: #24468f;
     border-bottom: 1px solid #7aa5d5;
 }
 .post-input::placeholder{
-    color: #fff;
+    color: #365681;
 }
 .home-post button{
     cursor: pointer;

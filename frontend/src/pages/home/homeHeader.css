@@ -2,6 +2,7 @@
     height: 6em;
     width: 100%;
     display: flex;
+    margin-top: .6em;
     flex-direction: row;
     border-radius: .5em;
     background: linear-gradient(25deg, #4058a6, #546ddb, #606ff0);
@@ -12,7 +13,8 @@
     flex-direction: row;
     margin-top: .5em;
     margin-left: 1em;
-
+    overflow-x: scroll;
+    
     gap: .5em;
 }
 .home-header img{

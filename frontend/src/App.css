@@ -2,9 +2,4 @@ body{
   margin: 0;
   padding: 0;
   background: linear-gradient(70deg, #edf5fc, #dbe4f1, #b6d6fb);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }

@@ -1,6 +1,7 @@
 import axios from '../../utils/axios';
 import React, { useState } from 'react';
 import './register.css';
+import { useNavigate } from 'react-router-dom';
 
 interface Form{
     username: string;
@@ -9,6 +10,7 @@ interface Form{
 }
 
 const Register = () => {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState<Form>({
         username: '',
@@ -18,7 +20,7 @@ const Register = () => {
 
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(false);
+        setLoading(true);
 
         const form = new FormData();
 
@@ -26,18 +28,23 @@ const Register = () => {
         form.append('email', formData.email)
         form.append('password', formData.password)
 
-        const res = await axios.post('/api/register/', form);
-        setFormData({
-            username: '',
-            email: '',
-            password: ''
-        })
-        console.log(res.data);
+        try{
+            await axios.post('/api/register/', form);
+            setFormData({
+                username: '',
+                email: '',
+                password: '',
+            })
+            navigate('/login');
+        }catch{
+            setLoading(false);
+        }
     }
 
   return (
     <div className='register'>
       <div className="register-container">
+        <h2>Sign Up</h2>
         <form onSubmit={handleRegister}>
             <input
                 type="text"
@@ -51,7 +58,7 @@ const Register = () => {
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="Username"
+                placeholder="Email"
                 className="login-input"
                 required
             />

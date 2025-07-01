@@ -1,14 +1,33 @@
 .authenticate{
-    width: 20em;
-    height: 40vh;
-    margin-top: 6em;
-    padding: 0em;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.authenticate .side-section{
+    width: 50%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: wheat;
+    background: linear-gradient(45deg, #405ec0, #546ddb, #656cac);
+}
+.side-section img{
+    width: 10em;
+    height: 10em;
 }
 .authenticate .container{
-
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    background: linear-gradient(-45deg, #526eca, #7588de, #949bd8);
 }

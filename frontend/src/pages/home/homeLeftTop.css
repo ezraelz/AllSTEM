@@ -1,7 +1,7 @@
 .home-left-top{
-    width: 100%;
+    width: 80%;
     height: 2em;
-    margin-bottom: .5em;
+    margin-left: 2.2em;
 }
 .home-left-top-container{
     display: flex;
@@ -11,7 +11,7 @@
     gap: .5em;
     padding: .5em;
     border-radius: 2rem;
-    background: linear-gradient(45deg, #204ee3, #546ddb, #3246f6);
+    background: #fff;
     border: 1px solid #fff;
 }
 .home-left-top .home-left-top-pro-img{
@@ -22,13 +22,13 @@
 .home-left-search,
 .home-left-search:active,
 .home-left-search:checked{
-    width: 80%;
+    width: 90%;
     border: none;
     background: none;
     font-size: 1.1rem;
     outline: none;
-    color: #d2d2d2;
+    color: #4b7ac7;
 }
 .home-left-search::placeholder{
-    color: #e0e0e0;
+    color: #333a73;
 }
