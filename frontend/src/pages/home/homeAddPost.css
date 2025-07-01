@@ -1,24 +1,31 @@
 .home-post{
-    width: 90%;
+    width: 95%;
     height: 10%;
-    padding: 1em;
     color: black;
-    border-radius: .5em;
-    box-shadow: 0 0 8px #7aa5d5;
+    padding-left: .2em;
 }
 .home-post .post-container form{
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    margin-left: 2em;
     gap: 1em;
+    padding: 2em;
+    border-radius: .5em;
+    color: #fff;
+    background: linear-gradient(45deg, #204ee3, #546ddb, #3246f6);
+    box-shadow: 0 0 8px #85aad4;
 }
 .home-post form .post-input{
     width: 80%;
     background: none;
     border: none;
     outline: none;
+    color: #fff;
+    border-bottom: 1px solid #7aa5d5;
+}
+.post-input::placeholder{
+    color: #fff;
 }
 .home-post button{
     cursor: pointer;
@@ -32,3 +39,4 @@
     background-color: #7aa5d5;
     color: rgb(240, 240, 240);
 }
+

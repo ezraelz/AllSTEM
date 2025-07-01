@@ -19,17 +19,18 @@
     top: 6em;
     width: 25%;
     height: 100%;
-    padding: 1em;
     display: flex;
     flex-direction: column;
     gap: .5em;
 }
+
 .home-feed .section-middle{
     width: 48%;
     height: 100%;
     display: flex;
     position: sticky;
     top: 0;
+    padding-bottom: 3em;
     flex-direction: column;
     justify-content: center;
     align-items: center;

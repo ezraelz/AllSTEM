@@ -1,6 +1,7 @@
 .home-left-container{
     margin: 0;
     padding: 0;
+    background: linear-gradient(45deg, #204ee3, #546ddb, #3246f6); 
 }
 
 .home-left-container ul{

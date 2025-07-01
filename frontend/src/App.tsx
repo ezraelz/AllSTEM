@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate, useParams, Navigate } from 'react-router-dom';
 import './App.css'
 import PublicRoute from './router/publicRoute';
@@ -9,10 +9,15 @@ import type { ReactElement } from 'react';
 import Login from './pages/auth/login';
 import Nav from './components/nav';
 import Logout from './pages/auth/logout';
+import { NavVisibilityProvider } from './context/NavVisibilityContext';
+import Layout from './layout';
+import ScrollToTop from './router/ScrollToTop';
+import { ToastContainer } from 'react-toastify';
+import Authenticate from './pages/auth/Authenticate';
 
 const ProtectedRoute = ({ element } : { element: ReactElement }) => {
   const isLoggedin = localStorage.getItem('access_token');
-  return isLoggedin ? element : <Navigate to="/login" replace/>;
+  return isLoggedin ? element : <Navigate to="/authenticate" replace/>;
 }
 
 const App = () => {
@@ -73,16 +78,25 @@ const App = () => {
     checkAuthStatus();
   }, []);
 
+  // Cart state and handlers
   return (
-    <Router>
-      <Nav />
-      
-      <Routes>
-        <Route path='/*' element={<ProtectedRoute element={<PublicRoute />}/>}/>
-        <Route path='/login' element={<Login />} />
-        <Route path='/logout' element={<Logout />} />
-      </Routes>
-    </Router>
+    <NavVisibilityProvider>
+      <Router>
+        <ToastContainer position="bottom-right" autoClose={3000} />
+        <Suspense fallback={<div className="main">Loading Page...</div>}>
+          <ScrollToTop />
+          <Layout
+            isLoggedIn={!!localStorage.getItem('access_token')}
+          >
+        <Routes>
+          <Route path='/*' element={<ProtectedRoute element={<PublicRoute />}/>}/>
+          <Route path='/authenticate' element={<Authenticate />} />
+          
+        </Routes>
+        </Layout>
+        </Suspense>
+      </Router>
+    </NavVisibilityProvider>
   )
 }
 

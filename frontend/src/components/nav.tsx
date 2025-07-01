@@ -1,42 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import './nav.css';
+import { useAuth } from '../context/AuthContext';
 import { Navigate, useNavigate } from 'react-router-dom';
 import axios from '../utils/axios';
 import { FaSearch, FaEnvelope, FaBell, FaUser, FaWarehouse, FaVideo, FaPeopleCarry, FaCalendar, FaPlay } from 'react-icons/fa';
 import { MdGroups, MdLocationCity } from 'react-icons/md';
 import Logo from '../assets/logo/logopng.png';
 
+
+interface NavProps {
+  isLoggedIn: boolean;
+} 
 interface User{
     username: string;
     profile_image: string;
     role: string;
 }
-const Nav = () => {
+
+const BaseUrl = 'http://127.0.0.1:8000';
+
+const Nav : React.FC<NavProps>  = () => {
+    const { isLoggedIn, setIsLoggedIn } = useAuth();
+    const [loading, setLoading] = useState(false);
     const [isLoggedin, setIsLoggedin] = useState<boolean>(false);
     const [user, setUser] = useState<User>();
     
     const navigate = useNavigate();
-
+    //fetch user data
     useEffect(()=>{
         const fetchUserData = async () => {
-            setIsLoggedin(true);
+            setLoading(true);
             const token = localStorage.getItem('access_token');
-            if (!token) return;
 
             try{
                 const res = await axios.get('/users/detail/', {
                     headers: {Authorization: `Bearer ${token}`}
                 });
                 setUser(res.data);
-                console.log(res.data);
             }catch{
                 console.log('Faild to fetch data')
-                setIsLoggedin(false);
-                navigate('/login');
             }
         }
-        fetchUserData();
-    }, []);
+        if (isLoggedIn) fetchUserData();
+    }, [isLoggedIn]);
 
     const middlelinks = [
         {name: 'Home', link: '/', icon: <FaWarehouse/>},
@@ -50,8 +56,16 @@ const Nav = () => {
         {name: 'Search', to: '#', icon: <FaSearch />},
         {name: 'Message', to: '#', icon: <FaEnvelope />},
         {name: 'Notifications', to: '#', icon: <FaBell />},
-        {name: 'Profile', to: '#', icon:isLoggedin ? <img src={`http://127.0.0.1:8000${user?.profile_image}`} alt="" className='nav-pro-img'/> : <FaUser />},
+        {name: 'Profile', to: '#', icon:isLoggedIn ? <img src={`${BaseUrl}${user?.profile_image}`} alt="" className='nav-pro-img'/> : <FaUser />},
     ]
+
+    useEffect(() => {
+        const token = localStorage.getItem('access_token');
+        if (token) setIsLoggedIn(true);
+        else setIsLoggedIn(false);
+    }, [location.pathname, setIsLoggedIn]); 
+
+    if (!loading) return;
     
   return (
     <div className='nav'>

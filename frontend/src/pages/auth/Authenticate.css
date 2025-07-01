@@ -1,0 +1,14 @@
+.authenticate{
+    width: 20em;
+    height: 40vh;
+    margin-top: 6em;
+    padding: 0em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: wheat;
+}
+.authenticate .container{
+
+}
