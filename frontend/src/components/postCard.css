@@ -1,0 +1,51 @@
+.card{
+    width: 100%;
+    padding: 0em;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+    gap: .1em;
+    background: linear-gradient(45deg, #204ee3, #546ddb, #2234db);
+    border-radius: .5em;
+    margin-top: .5em;
+}
+.card-top{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+    padding: .5em;
+}
+.card-top .card-title {
+    display: flex;
+    flex-direction: column;
+}
+.card-top .card-title span{
+    font-size: .7em;
+    color: bisque;
+}
+.card-top img{
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+}
+.card-top .posted_at{
+    margin-left: auto;
+}
+.card .card-content{
+    text-align: justify;
+    word-spacing: .01rem;
+    color: #fff;
+}
+.card-content p{
+    padding: 1em;
+}
+.card .card-content img{
+    width: 100%;
+    height: 2 0em;
+}

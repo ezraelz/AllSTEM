@@ -12,7 +12,9 @@ interface User{
 
 interface Post{
     id: string;
-    author: User;
+    author: string;
+    author_username: string;
+    author_profile_image: string;
     title: string;
     image: string;
     posted_at: number;
@@ -34,7 +36,6 @@ const PostCard = () => {
                     headers: {Authorization: `Bearer ${token}`}
                 })
                 setUser(res.data);
-                console.log(res.data);
             } catch (err){
                 console.log('error during user fetch data', err);
                 setLoading(false);
@@ -52,7 +53,6 @@ const PostCard = () => {
                     headers: {Authorization: `Bearer ${token}`}
                 })
                 setPost(res.data);
-                console.log(res.data);
             } catch (err){
                 console.log('error during user fetch data', err);
                 setLoading(false);
@@ -66,11 +66,11 @@ const PostCard = () => {
         {post.map((post)=>(
             <div className="card" key={post.title}>
                 <div className="card-top">
-                    <img src={post.author.profile_image} alt="" />
-                    <p><span>{post.author.username}</span><span>{post.posted_at}</span></p>
+                    <img src={`http://127.0.0.1:8000${post.author_profile_image}`} alt="" />
+                    <p className='card-title'>{post.title} <span>By {post.author_username}</span></p>  <p className='posted_at'>{post.posted_at}</p>
                 </div>
                 <div className="card-content">
-                    <img src={post.image} alt="" />
+                    <img src={`http://127.0.0.1:8000${post.image}`} alt="" />
                     <p>{post.description}</p>
                 </div>
             </div>

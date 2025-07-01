@@ -8,6 +8,7 @@ import axios from './utils/axios';
 import type { ReactElement } from 'react';
 import Login from './pages/auth/login';
 import Nav from './components/nav';
+import Logout from './pages/auth/logout';
 
 const ProtectedRoute = ({ element } : { element: ReactElement }) => {
   const isLoggedin = localStorage.getItem('access_token');
@@ -15,37 +16,27 @@ const ProtectedRoute = ({ element } : { element: ReactElement }) => {
 }
 
 const App = () => {
-  const { id } = useParams();
-  const [isLoggedin, setIsLoggedin] = useState<boolean>(false);
-  const [role, setRole] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [isLoggedin, setIsLoggedin] = useState<boolean>(true);
       
   useEffect(()=> {
-    const checkAuthStat = async () => {
-      const token = localStorage.getItem('access_token');
-      try{
-        if (!token) return;
-        const res = await axios.get('/api/auth/status/', {
-            headers: {Authorization: `Bearer ${token}`}
-        });
-
-        const data = res.data;
-        setRole(data.role);
-        setIsLoggedin(true);
-      }catch(err){
-        console.log('not authenticated', err);
-        setIsLoggedin(false);
-      }
+    const token = localStorage.getItem('access_token');
+    if (!token) {
+      setIsLoggedin(false);
+      setLoading(false);
+    } else {
+      setIsLoggedin(true);
     }
-    checkAuthStat();
-  }, []);
-
+  })
 
   return (
     <Router>
-      <Nav />
+      {loading && isLoggedin && <Nav />}
+      
       <Routes>
         <Route path='/*' element={<ProtectedRoute element={<PublicRoute />}/>}/>
         <Route path='/login' element={<Login />} />
+        <Route path='/logout' element={<Logout />} />
       </Routes>
     </Router>
   )
