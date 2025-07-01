@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../utils/axios';
 import './postCard.css';
+import { format } from 'date-fns';
 
 interface User{
     id: number;
@@ -26,7 +27,7 @@ const PostCard = () => {
     const [user, setUser] = useState<User>();
     const [post, setPost] = useState<Post[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
-
+    
     useEffect(()=> {
         const fetchUserData = async () => {
             setLoading(true);
@@ -63,18 +64,30 @@ const PostCard = () => {
 
   return (
     <div className='card-container'>
-        {post.map((post)=>(
-            <div className="card" key={post.title}>
-                <div className="card-top">
-                    <img src={`http://127.0.0.1:8000${post.author_profile_image}`} alt="" />
-                    <p className='card-title'>{post.title} <span>By {post.author_username}</span></p>  <p className='posted_at'>{post.posted_at}</p>
-                </div>
-                <div className="card-content">
-                    <img src={`http://127.0.0.1:8000${post.image}`} alt="" />
-                    <p>{post.description}</p>
-                </div>
-            </div>
-        ))}
+        {loading ? (
+            <>
+                {post.map((post)=>(
+                    <div className="card" key={post.title}>
+                        <div className="card-top">
+                            <img src={`http://127.0.0.1:8000${post.author_profile_image}`} alt="" />
+                            <p className='card-title'>{post.title} <span>By {post.author_username}</span></p>  
+                            <p className='posted_at'>
+                                {format(new Date(post.posted_at), 'PPP')}
+                            </p>
+                        </div>
+                        <div className="card-content">
+                            <img src={`http://127.0.0.1:8000${post.image}`} alt="" />
+                            <p>{post.description}</p>
+                        </div>
+                    </div>
+                ))}
+            </>
+        ) : (
+            <>
+                <p>Loading posts ...</p>
+            </>
+        )}
+        
       
     </div>
   )

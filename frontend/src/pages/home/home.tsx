@@ -1,7 +1,9 @@
 import PostCard from '../../components/postCard';
 import './home.css';
+import HomeAddPost from './homeAddPost';
 import HomeHeader from './homeHeader';
 import HomeLeft from './homeLeft';
+import HomeLeftTop from './homeLeftTop';
 
 const Home = () => {
 
@@ -9,8 +11,12 @@ const Home = () => {
     <div className='home-feed'>
       <div className="sections">
         <div className="section-left">
-          <div className="section-left-top">p</div>
-          <div className="section-left-bottom">b</div>
+          <div className="section-left-top">
+            <HomeLeftTop/>
+          </div>
+          <div className="section-left-bottom">
+            <HomeAddPost />
+          </div>
         </div>
         <div className="section-middle">
           <HomeHeader />

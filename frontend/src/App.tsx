@@ -29,9 +29,53 @@ const App = () => {
     }
   })
 
+  // Check authentication status & refresh token if needed
+  useEffect(() => {
+    const checkAuthStatus = async () => {
+      const accessToken = localStorage.getItem('access_token');
+      const refreshToken = localStorage.getItem('refresh_token');
+
+      if (!accessToken) {
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
+        return;
+      }
+
+      try {
+        const response = await axios.get('/api/auth/status/', {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          }
+        });
+
+        const data = response.data;
+        if (!data.isAuthenticated && refreshToken) {
+          const response = await axios.post('api/token/refresh/', {
+            headers: {
+            Authorization: `Bearer ${accessToken}`,
+          }
+          });
+
+          const refreshData = response.data;
+          if (refreshData.access) {
+            localStorage.setItem('access_token', refreshData.access);
+          } else {
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('refresh_token');
+          }
+        }
+      } catch {
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
+      }
+    };
+
+    checkAuthStatus();
+  }, []);
+
   return (
     <Router>
-      {loading && isLoggedin && <Nav />}
+      <Nav />
       
       <Routes>
         <Route path='/*' element={<ProtectedRoute element={<PublicRoute />}/>}/>

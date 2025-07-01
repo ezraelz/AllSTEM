@@ -14,8 +14,6 @@ const HomeLeft = () => {
         {name: 'Friends', link: '/', icon:<FaUserFriends/>},
         {name: 'Followers', link: '/', icon:<FaUserPlus/>},
         {name: 'Groups', link: '/', icon:<MdGroups/>},
-        {name: 'Videos', link: '/', icon:<FaVideo/>},
-        {name: 'Centers', link: '/', icon:<MdLocationCity/>},
         {name: 'Contacts', link: '/', icon:<IoIosContacts/>},
     ]
   return (
