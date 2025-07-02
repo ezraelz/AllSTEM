@@ -72,3 +72,7 @@
     height: 1.2em;
     border-radius: 50%;
 }
+.nav .message-icon{
+    width: 1em;
+    height: 1em;
+}

@@ -6,7 +6,7 @@ import axios from '../utils/axios';
 import { FaSearch, FaEnvelope, FaBell, FaUser, FaWarehouse, FaVideo, FaPeopleCarry, FaCalendar, FaPlay } from 'react-icons/fa';
 import { MdGroups, MdLocationCity } from 'react-icons/md';
 import Logo from '../assets/logo/logopng.png';
-
+import messageIcon from '../assets/logo/messenger-icon.png';
 
 interface NavProps {
   isLoggedIn: boolean;
@@ -54,7 +54,7 @@ const Nav : React.FC<NavProps>  = () => {
 
     const navlinks = [
         {name: 'Search', to: '#', icon: <FaSearch />},
-        {name: 'Message', to: '#', icon: <FaEnvelope />},
+        {name: 'Message', to: '#', icon: <><img src={messageIcon} alt="" className='message-icon'/></>},
         {name: 'Notifications', to: '#', icon: <FaBell />},
         {name: 'Profile', to: '#', icon:isLoggedIn ? <img src={`${BaseUrl}${user?.profile_image}`} alt="" className='nav-pro-img'/> : <FaUser />},
     ]

@@ -33,6 +33,8 @@ const HomeLeftTop = () => {
         fetchUserData();
     }, []);
 
+    if(!loading) return;
+
   return (
     <div className='home-left-top'>
       <div className="home-left-top-container">

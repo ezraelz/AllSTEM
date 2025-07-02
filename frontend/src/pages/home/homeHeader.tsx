@@ -11,12 +11,14 @@ interface User{
 }
 
 const HomeHeader = () => {
+    const [loading, setLoading] = useState(false);
     const [user, setUser] = useState<User>();
     const [users, setUsers] = useState<User[]>([]);
     const [post, setPost] = useState();
 
     useEffect(()=>{
         const fetchUserData = async () => {
+            setLoading(true);
             const token = localStorage.getItem('access_token');
             const res = await axios.get('/users/detail/', {
                 headers: {Authorization: `Bearer ${token}`}
@@ -33,13 +35,14 @@ const HomeHeader = () => {
                 headers: {Authorization: `Bearer ${token}`}
             });
             setUsers(res.data);
-            console.log(res.data);
         }
         fetchUsersData();
     }, []);
 
+    if (!loading) return;
+
   return (
-    <div className='home-header'>
+    <div className='home-header hide-scrollbar'>
       <div className="home-header-container">
         <img src={`http://127.0.0.1:8000${user?.profile_image}`} alt="" />
         {users.map((user)=>(

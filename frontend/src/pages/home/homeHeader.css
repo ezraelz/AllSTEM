@@ -1,24 +1,27 @@
 .home-header{
-    height: 6em;
+    height: 8em;
     width: 100%;
     display: flex;
-    margin-top: .6em;
     flex-direction: row;
     border-radius: .5em;
-    background: linear-gradient(25deg, #4058a6, #546ddb, #606ff0);
-    border: .5px solid #3771ce;
 }
 .home-header-container{
     display: flex;
     flex-direction: row;
     margin-top: .5em;
-    margin-left: 1em;
-    overflow-x: scroll;
-    
     gap: .5em;
 }
+.hide-scrollbar {
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
 .home-header img{
-    width: 5em;
-    height: 5em;
+    width: 6em;
+    height: 7em;
     border-radius: 15%;
 }

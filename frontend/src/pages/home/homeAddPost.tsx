@@ -48,7 +48,7 @@ const HomeAddPost = () => {
             })
             if (fileInputRef.current) fileInputRef.current.value = '';
         } catch {
-            setLoading(false);
+            
             console.log('Error Adding Post!')
         }
 
