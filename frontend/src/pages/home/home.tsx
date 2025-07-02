@@ -12,7 +12,6 @@ const Home = () => {
       <div className="sections">
         <div className="section-left">
           <div className="section-left-top">
-            <HomeLeftTop/>
           </div>
           <div className="section-left-bottom">
             <HomeAddPost />
@@ -23,6 +22,7 @@ const Home = () => {
           <PostCard/>
         </div>
         <div className="section-right">
+          <HomeLeftTop/>
           <HomeLeft />
         </div>
       </div>

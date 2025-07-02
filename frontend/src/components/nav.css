@@ -51,9 +51,8 @@
     border: none;
     background: none;
     color: rgb(57, 98, 161);
-    font-size: 1.2em;
+    font-size: 1em;
     cursor: pointer;
-    padding: .8em;
     transition: background 0.3s;
 }
 .navbar-content ul li button:hover,
@@ -71,4 +70,26 @@
     width: 1em;
     height: 1em;
 }
-
+.navbar-content ul li{
+    border-radius: 50%;
+    background: #c4c4c4;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: .4em;
+}
+.navbar-middle ul{
+    gap: 2em;
+}
+.navbar-middle ul li{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: .5em;
+}
+.navbar-middle ul li button{
+    font-size: 1.2em;
+    padding: .6em;
+}

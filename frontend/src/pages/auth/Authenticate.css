@@ -49,8 +49,8 @@
     border-radius: .5em;
     font-weight: 600;
     cursor: pointer;
-    color: #46f740;
-    border: 1px solid #3fdd39;
+    color: #efefef;
+    border: 1px solid #ffffff;
 }
 .header .button:hover{
     background: #fff;

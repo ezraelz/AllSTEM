@@ -1,0 +1,12 @@
+.profile-photos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5em;
+}
+.profile-photos .photos img{
+    width: 15em;
+    height: 15em;
+}

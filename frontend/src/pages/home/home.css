@@ -16,7 +16,7 @@
 .home-feed .sections .section-left,
 .home-feed .section-right{
     position: sticky;
-    top: 5.4em;
+    top: 5em;
     width: 25%;
     height: 100%;
     display: flex;

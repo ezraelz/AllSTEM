@@ -11,6 +11,7 @@ import Layout from './layout';
 import ScrollToTop from './router/ScrollToTop';
 import { ToastContainer } from 'react-toastify';
 import Authenticate from './pages/auth/Authenticate';
+import ProfileRoute from './router/profileRoute';
 
 const ProtectedRoute = ({ element } : { element: ReactElement }) => {
   const isLoggedin = localStorage.getItem('access_token');
@@ -87,8 +88,8 @@ const App = () => {
           >
           <Routes>
             <Route path='/*' element={<ProtectedRoute element={<PublicRoute />}/>}/>
+            <Route path='/profile/*' element={<ProtectedRoute element={<ProfileRoute />}/>}/>
             <Route path='/authenticate' element={<Authenticate />} />
-            
           </Routes>
         </Layout>
         </Suspense>
