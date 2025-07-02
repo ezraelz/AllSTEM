@@ -1,9 +1,11 @@
 .home-post{
-    width: 80%;
+    width: 90%;
     height: 10%;
+    margin-top: 1em;
     color: black;
-    padding-left: .2em;
-    margin-left: 2em;
+    padding-top: .1em;
+    margin-left: 1em;
+    background: #4f70db;
 }
 .home-post .post-container form{
     display: flex;
@@ -15,10 +17,10 @@
     border-radius: .5em;
     color: #374777;
     background: #f6f6f6;
-    box-shadow: 0 0 8px #85aad4;
+    box-shadow: 0 0 8px #aac7e9;
 }
 .home-post form .post-input{
-    width: 80%;
+    width: 95%;
     background: none;
     border: none;
     outline: none;

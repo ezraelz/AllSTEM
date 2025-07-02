@@ -65,23 +65,26 @@ const HomeAddPost = () => {
                 value={formData.title}
                 className='post-input'
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                />
-                <input 
-                type='textArea' 
-                placeholder='Description'
-                className='post-input'
+            />
+            <textarea
+                placeholder="Description"
+                className="post-input"
+                rows={4}
+                style={{ resize: 'vertical' }}
                 value={formData.description}
-                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                />
-                <input 
+                onChange={(e) =>
+                    setFormData({ ...formData, description: e.target.value })
+                }
+            />
+            <input 
                 type="text" 
                 placeholder='Tag'
                 value={formData.tag}
                 className='post-input'
                 onChange={(e) => setFormData({ ...formData, tag: e.target.value })}
-                />
-                <label htmlFor="image">Image</label>
-                <input 
+            />
+            <label htmlFor="image">Image</label>
+            <input 
                 type="file" 
                 placeholder='image'
                 ref={fileInputRef}
@@ -91,7 +94,7 @@ const HomeAddPost = () => {
                         setFormData({ ...formData, image: e.target.files[0] });
                     }
                 }}
-                />
+            />
             <button>Submit</button>
         </form>
       </div>

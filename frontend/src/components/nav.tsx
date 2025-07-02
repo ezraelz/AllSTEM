@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './nav.css';
 import { useAuth } from '../context/AuthContext';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import axios from '../utils/axios';
-import { FaSearch, FaEnvelope, FaBell, FaUser, FaWarehouse, FaVideo, FaPeopleCarry, FaCalendar, FaPlay } from 'react-icons/fa';
+import { FaSearch, FaBell, FaUser, FaWarehouse, FaCalendar, FaPlay } from 'react-icons/fa';
 import { MdGroups, MdLocationCity } from 'react-icons/md';
 import Logo from '../assets/logo/logopng.png';
 import messageIcon from '../assets/logo/messenger-icon.png';
@@ -11,6 +11,7 @@ import messageIcon from '../assets/logo/messenger-icon.png';
 interface NavProps {
   isLoggedIn: boolean;
 } 
+
 interface User{
     username: string;
     profile_image: string;
@@ -56,7 +57,11 @@ const Nav : React.FC<NavProps>  = () => {
         {name: 'Search', to: '#', icon: <FaSearch />},
         {name: 'Message', to: '#', icon: <><img src={messageIcon} alt="" className='message-icon'/></>},
         {name: 'Notifications', to: '#', icon: <FaBell />},
-        {name: 'Profile', to: '#', icon:isLoggedIn ? <img src={`${BaseUrl}${user?.profile_image}`} alt="" className='nav-pro-img'/> : <FaUser />},
+        {name: 'Profile', 
+            to: '/profile', 
+            icon:isLoggedIn ? <img src={`${BaseUrl}${user?.profile_image}`} alt="" className='nav-pro-img'/> : <FaUser />,
+            
+        },
     ]
 
     useEffect(() => {
@@ -77,7 +82,7 @@ const Nav : React.FC<NavProps>  = () => {
             <ul>
             {middlelinks.map((link)=>(
                 <li key={link.name}>
-                    <button>{link.icon}</button>
+                    <button title={link.name}><Link to={link.link}>{link.icon}</Link></button>
                 </li>
             ))}
             </ul>
@@ -86,7 +91,7 @@ const Nav : React.FC<NavProps>  = () => {
             <ul>
                 {navlinks.map((link)=> (
                     <li key={link.name}>
-                        <button onClick={()=> <Navigate to={link.to}/>}>{link.icon}</button>
+                        <button title={link.name}><Link to={link.name}>{link.icon}</Link></button>
                     </li>
                 ))}
             </ul>

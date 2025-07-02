@@ -9,7 +9,6 @@
     position: sticky;
     top: 0;
 }
-
 .navbar-container {
     padding: 0 2em;
     width: 100%;
@@ -18,17 +17,16 @@
     align-items: center;
 }
 .nav .brand h1 img{
-    width: 2em;
-    height: 2em;
+    width: 2.5em;
+    height: 2.5em;
     border-radius: 50%;
 }
-
 .navbar-container .brand h1{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-size: 1.4em;
+    font-size: 1.1em;
     font-weight: bold;
 }
 .navbar-container .brand span{
@@ -39,7 +37,6 @@
     display: flex;
     align-items: center;
 }
-
 .navbar-content ul,
 .navbar-middle ul {
     display: flex;
@@ -49,7 +46,6 @@
     padding: 0;
     gap: .1em;
 }
-
 .navbar-content ul li button,
 .navbar-middle ul li button {
     border: none;
@@ -57,16 +53,15 @@
     color: rgb(57, 98, 161);
     font-size: 1.2em;
     cursor: pointer;
-    padding: .5em;
+    padding: .8em;
     transition: background 0.3s;
 }
-
 .navbar-content ul li button:hover,
 .navbar-middle ul li button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(63, 63, 63, 0.461);
+    color: rgb(224, 133, 91);
     border-radius: 5px;
 }
-
 .nav-pro-img{
     width: 1.2em;
     height: 1.2em;
@@ -76,3 +71,4 @@
     width: 1em;
     height: 1em;
 }
+

@@ -6,9 +6,6 @@ import { useEffect, useState } from 'react';
 import axios from './utils/axios';
 
 import type { ReactElement } from 'react';
-import Login from './pages/auth/login';
-import Nav from './components/nav';
-import Logout from './pages/auth/logout';
 import { NavVisibilityProvider } from './context/NavVisibilityContext';
 import Layout from './layout';
 import ScrollToTop from './router/ScrollToTop';
@@ -88,11 +85,11 @@ const App = () => {
           <Layout
             isLoggedIn={!!localStorage.getItem('access_token')}
           >
-        <Routes>
-          <Route path='/*' element={<ProtectedRoute element={<PublicRoute />}/>}/>
-          <Route path='/authenticate' element={<Authenticate />} />
-          
-        </Routes>
+          <Routes>
+            <Route path='/*' element={<ProtectedRoute element={<PublicRoute />}/>}/>
+            <Route path='/authenticate' element={<Authenticate />} />
+            
+          </Routes>
         </Layout>
         </Suspense>
       </Router>
