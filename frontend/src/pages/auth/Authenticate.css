@@ -15,7 +15,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(45deg, #405ec0, #546ddb, #656cac);
+    background: #fff;
 }
 .side-section img{
     width: 10em;
@@ -29,5 +29,29 @@
     justify-content: center;
     align-items: center;
     gap: 2em;
-    background: linear-gradient(-45deg, #526eca, #7588de, #949bd8);
+    background: #64a3f4;
+}
+.authenticate .container .header{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+.authenticate .header .button{
+    width: 50%;
+    padding: .5em;
+    background: none;
+    border-radius: .5em;
+    cursor: pointer;
+    color: #46f740;
+    border: 1px solid #3fdd39;
+}
+.header .button:hover{
+    background: #fff;
+    color: #405ec0;
+}
+.button.active{
+    background: #8dd0d8;
 }
