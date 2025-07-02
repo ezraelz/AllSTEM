@@ -18,7 +18,7 @@
     position: sticky;
     top: 5em;
     width: 25%;
-    height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     gap: .5em;

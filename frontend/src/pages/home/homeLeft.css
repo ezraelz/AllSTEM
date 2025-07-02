@@ -1,23 +1,25 @@
 .home-left-container{
     margin: 0;
     padding: 0;
-    background: #fff; 
 }
-
+.home-left-container-nav{
+    background: #fff; 
+    padding: .001em;
+}
 .home-left-container ul{
     list-style: none;
     display: flex;
     flex-direction: row;
     justify-content: start;
     align-items: start;
-    gap: 1em;
+    gap: .5em;
 }
 .home-left-container ul li{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1.5em;
+    gap: 1em;
 }
 .home-left-container ul li button{
     border: none;

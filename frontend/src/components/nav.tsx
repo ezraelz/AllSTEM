@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './nav.css';
 import { useAuth } from '../context/AuthContext';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from '../utils/axios';
 import { FaSearch, FaBell, FaUser, FaWarehouse, FaCalendar, FaPlay } from 'react-icons/fa';
 import { MdGroups, MdLocationCity } from 'react-icons/md';
@@ -21,7 +21,8 @@ interface User{
 const BaseUrl = 'http://127.0.0.1:8000';
 
 const Nav : React.FC<NavProps>  = () => {
-    const { isLoggedIn, setIsLoggedIn } = useAuth();
+    const [activeLink, setActiveLink] = useState<string | undefined>(undefined);
+    const {isLoggedIn, setIsLoggedIn } = useAuth();
     const [loading, setLoading] = useState(false);
     const [isLoggedin, setIsLoggedin] = useState<boolean>(false);
     const [user, setUser] = useState<User>();
@@ -52,7 +53,6 @@ const Nav : React.FC<NavProps>  = () => {
         {name: 'Centers', link: '/', icon:<MdLocationCity/>},
         {name: 'Events', link: '/', icon:<FaCalendar/>},
     ]
-
     const navlinks = [
         {name: 'Search', to: '#', icon: <FaSearch />},
         {name: 'Message', to: '#', icon: <><img src={messageIcon} alt="" className='message-icon'/></>},
@@ -63,13 +63,11 @@ const Nav : React.FC<NavProps>  = () => {
             
         },
     ]
-
     useEffect(() => {
         const token = localStorage.getItem('access_token');
         if (token) setIsLoggedIn(true);
         else setIsLoggedIn(false);
     }, [location.pathname, setIsLoggedIn]); 
-
     if (!loading) return;
     
   return (
@@ -81,8 +79,8 @@ const Nav : React.FC<NavProps>  = () => {
         <div className="navbar-middle">
             <ul>
             {middlelinks.map((link)=>(
-                <li key={link.name}>
-                    <button title={link.name}><Link to={link.link}>{link.icon}</Link></button>
+                <li key={link.name} onClick={()=> setActiveLink(link.link)}>
+                    <button title={link.name} className={`link ${activeLink ? 'active' : ''}`}><Link to={link.link}>{link.icon}</Link></button>
                 </li>
             ))}
             </ul>

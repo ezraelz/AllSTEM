@@ -1,7 +1,8 @@
 .home-left-top{
-    width: 90%;
+    width: 100%;
     height: 2em;
-    margin-left: 1em;
+    margin-left: 0em;
+    margin-bottom: 1em;
 }
 .home-left-top-container{
     display: flex;

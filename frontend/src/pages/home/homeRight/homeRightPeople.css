@@ -1,0 +1,30 @@
+.home-people{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin-top: 0em;
+    color: rgb(18, 18, 18);
+    overflow-y: scroll;
+}
+.hide-scrollbar {
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
+.home-people .people-card{
+    width: 70%;
+    height: 3.5em;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+.home-people img{
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+}
