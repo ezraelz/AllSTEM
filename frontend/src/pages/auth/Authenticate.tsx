@@ -26,14 +26,14 @@ const Authenticate = () => {
       <div className="container">
         <div className="header">
           <button
-            title='login'
+            name='login'
             onClick={() => handleClick('login')}
             className={`button ${activeForm === 'login' ? 'active' : ''}`}
           >
             Login
           </button>
           <button
-            title='signup'
+            name='signup'
             onClick={() => handleClick('register')}
             className={`button ${activeForm === 'register' ? 'active' : ''}`}
           >

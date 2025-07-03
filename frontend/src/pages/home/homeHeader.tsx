@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../utils/axios';
 import './homeHeader.css';
+import ScrollLeft from '../../components/scrollLeft';
 
 interface User{
     id: number,
@@ -11,10 +12,15 @@ interface User{
 }
 
 const HomeHeader = () => {
+    const [scrolledLeft, setScrolledLeft] = useState<boolean>(false)
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useState<User>();
     const [users, setUsers] = useState<User[]>([]);
     const [post, setPost] = useState();
+
+    const handleScrollled = () => {
+        setScrolledLeft(true);
+    }
 
     useEffect(()=>{
         const fetchUserData = async () => {
@@ -46,8 +52,13 @@ const HomeHeader = () => {
       <div className="home-header-container">
         <img src={`http://127.0.0.1:8000${user?.profile_image}`} alt="" />
         {users.map((user)=>(
-            <img key={user.id} src={`http://127.0.0.1:8000${user.profile_image}`} alt="" />
+            <div className='header-card'>
+                <img key={user.id} src={`http://127.0.0.1:8000${user.profile_image}`} alt="" />
+                <div className="user-info">{user.username}</div>
+            </div>
         ))}
+
+        <ScrollLeft onScrolled={handleScrollled} isScrolled={scrolledLeft}/>
       </div>
     </div>
   )

@@ -66,9 +66,9 @@ const Login: React.FC = () => {
     }
   };
 
-  if (loading) return <div className="main"><div className="outer"><div className="inner"></div>
+  if (loading) return <div className="main"><div className="outer"><div className="inner">Loging In...</div>
                         </div>
-                          Loging In...
+                          
                       </div>;
   
   return (
