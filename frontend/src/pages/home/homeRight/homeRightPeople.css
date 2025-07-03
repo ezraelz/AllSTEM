@@ -1,30 +1,37 @@
-.home-people{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    margin-top: 0em;
-    color: rgb(18, 18, 18);
-    overflow-y: scroll;
+.home-people {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 0;
+  color: rgb(18, 18, 18);
+  overflow-y: auto; /* vertical scroll */
+  max-height: 65vh; /* optional: prevents overflowing page */
 }
+
+/* Scrollbar hidden across browsers */
 .hide-scrollbar {
-  overflow: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE & Edge */
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari, Opera */
+  display: none;                /* Chrome, Safari, Opera */
 }
-.home-people .people-card{
-    width: 70%;
-    height: 3.5em;
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
+
+.home-people .people-card {
+  width: 70%;
+  height: 2.5em;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0.5em 0; /* optional spacing between cards */
+  cursor: pointer;  /* optional UX enhancement */
 }
-.home-people img{
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
+
+.home-people img {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  object-fit: cover; /* ensures image fills the circle neatly */
 }

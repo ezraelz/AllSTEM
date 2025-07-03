@@ -22,6 +22,11 @@
     display: flex;
     flex-direction: column;
     gap: .5em;
+    scroll-behavior: smooth;
+}
+.home-feed .sections .section-left{
+    position: sticky;
+    top: 5em;
 }
 .home-feed .section-middle{
     width: 48%;

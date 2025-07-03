@@ -10,6 +10,7 @@
     flex-direction: row;
     margin-top: .5em;
     gap: .5em;
+    scroll-behavior: smooth;
 }
 .hide-scrollbar {
   overflow: auto;
