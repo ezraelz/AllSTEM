@@ -28,8 +28,8 @@
     background: none;
     border-radius: .5em;
     cursor: pointer;
-    padding: .5em;
-    width: 45%;
+    padding: .6em;
+    width: 42%;
 }
 .login-container button:hover{
     background: #fff;
