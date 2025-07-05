@@ -50,10 +50,14 @@
 .navbar-middle ul li button {
     border: none;
     background: none;
-    color: rgb(57, 98, 161);
+    color: rgb(57, 138, 161);
     font-size: 1em;
     cursor: pointer;
     transition: background 0.3s;
+}
+.navbar-middle ul li button{
+    border-radius: .3em;
+    border:1px solid rgba(155, 154, 154, 0.977);
 }
 .navbar-content ul li button:hover,
 .navbar-middle ul li button:hover {
@@ -80,7 +84,7 @@
     padding: .4em;
 }
 .navbar-middle ul{
-    gap: 2em;
+    gap: .2em;
 }
 .navbar-middle ul li{
     display: flex;
@@ -93,3 +97,4 @@
     font-size: 1.2em;
     padding: .6em;
 }
+

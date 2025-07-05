@@ -13,6 +13,7 @@ interface User{
 }
 
 interface Post{
+    id: number;
     author: string;
     author_username: string;
     author_profile_image: string;
@@ -69,7 +70,7 @@ const PostCard = () => {
         {loading ? (
             <>
                 {post.map((post)=>(
-                    <div className="card" key={post.title} onClick={()=> navigate(`/posts/detail/${id}/`)}>
+                    <div className="card" key={post.title} onClick={()=> navigate(`/posts/detail/${post.id}/`)}>
                         <div className="card-top">
                             <img src={`http://127.0.0.1:8000${post.author_profile_image}`} alt="" />
                             <p className='card-title'>{post.title} <span>By {post.author_username}</span></p>  

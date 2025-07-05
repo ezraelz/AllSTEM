@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../utils/axios';
 import { useParams } from 'react-router-dom';
 import { format } from 'date-fns';
+import './singlePostcard.css';
 
 interface Post{
     id: number;
@@ -24,7 +25,7 @@ const SignlePostcard = () => {
             setLoading(true);
             const token = localStorage.getItem('access_token');
             if (!token) return;
-            const res = await axios.get(`/posts/detail/${id}`, {
+            const res = await axios.get(`/posts/detail/${id}/`, {
                 headers: {Authorization: `Bearer ${token}`}
             });
 
@@ -43,14 +44,18 @@ const SignlePostcard = () => {
             <img src={`http://127.0.0.1:8000${post?.author_profile_image}`} alt="" />
             <p className='card-title'>{post?.title} <span>By {post?.author_username}</span></p>  
             <p className='posted_at'>
-                {format(new Date(post?.posted_at), 'PPP')}
+                {post?.posted_at ? format(new Date(post.posted_at), 'PPP') : ''}
             </p>
         </div>
         <div className="card-content">
             <img src={`http://127.0.0.1:8000${post?.image}`} alt="" />
             <p>{post?.description}</p>
         </div>
+        
       </div>
+        <div className="comments">
+            <h2>Comments:</h2>
+        </div>
     </div>
   )
 }
