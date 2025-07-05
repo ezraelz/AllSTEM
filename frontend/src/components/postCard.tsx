@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../utils/axios';
 import './postCard.css';
 import { format } from 'date-fns';
+import { useNavigate, useParams } from 'react-router-dom';
 
 interface User{
     id: number;
@@ -12,7 +13,6 @@ interface User{
 }
 
 interface Post{
-    id: string;
     author: string;
     author_username: string;
     author_profile_image: string;
@@ -24,10 +24,12 @@ interface Post{
 }
 
 const PostCard = () => {
+    const { id } = useParams();
     const [user, setUser] = useState<User>();
     const [post, setPost] = useState<Post[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
-    
+    const navigate = useNavigate();
+
     useEffect(()=> {
         const fetchUserData = async () => {
             setLoading(true);
@@ -67,7 +69,7 @@ const PostCard = () => {
         {loading ? (
             <>
                 {post.map((post)=>(
-                    <div className="card" key={post.title}>
+                    <div className="card" key={post.title} onClick={()=> navigate(`/posts/detail/${id}/`)}>
                         <div className="card-top">
                             <img src={`http://127.0.0.1:8000${post.author_profile_image}`} alt="" />
                             <p className='card-title'>{post.title} <span>By {post.author_username}</span></p>  

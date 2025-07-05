@@ -10,6 +10,7 @@
     background: #6e91ad;
     border-radius: .5em;
     margin-top: .5em;
+    cursor: pointer;
 }
 .card-top{
     width: 100%;

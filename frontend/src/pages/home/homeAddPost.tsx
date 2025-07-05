@@ -24,6 +24,7 @@ const HomeAddPost = () => {
         setLoading(true);
 
         const token = localStorage.getItem('access_token');
+        if (!token) return ('/login');
         const form = new FormData();
 
         form.append('title', formData.title),

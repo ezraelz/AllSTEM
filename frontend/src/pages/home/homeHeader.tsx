@@ -57,7 +57,7 @@ const HomeHeader = () => {
   return (
     <div className='home-header hide-scrollbar'>
       <div className="home-header-container">
-        <img src={`http://127.0.0.1:8000${user?.profile_image}`} alt="" />
+        <img src={`http://127.0.0.1:8000${user?.profile_image}`} alt="" className='user-pic'/>
         {users.map((user)=>(
             <div className='header-card' key={user.id} onClick={() => navigate(`/profile/${user.id}/`)}>
                 <img src={`http://127.0.0.1:8000${user.profile_image}`} alt="" />

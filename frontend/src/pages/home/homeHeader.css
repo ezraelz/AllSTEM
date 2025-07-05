@@ -48,3 +48,9 @@
   align-items: center;
   background: rgba(28, 28, 28, 0.525);
 }
+.home-header .user-pic{
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}

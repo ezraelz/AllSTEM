@@ -49,7 +49,6 @@ const Nav : React.FC<NavProps>  = () => {
     const middlelinks = [
         {name: 'Home', link: '/', icon: <FaWarehouse/>},
         {name: 'Videos', link: '/videos', icon: <FaPlay/>},
-        {name: 'Groups', link: '/groups', icon: <MdGroups/>},
         {name: 'Centers', link: '/', icon:<MdLocationCity/>},
         {name: 'Events', link: '/', icon:<FaCalendar/>},
     ]
