@@ -33,6 +33,7 @@ const HomeHeader = () => {
                 headers: {Authorization: `Bearer ${token}`}
             });
             setUser(res.data);
+            console.log(res.data);
         }
         fetchUserData();
     }, []);
@@ -50,17 +51,13 @@ const HomeHeader = () => {
 
     if (!loading) return;
 
-    const handleClick = () => {
-
-    }
-
   return (
     <div className='home-header hide-scrollbar'>
       <div className="home-header-container">
-        <img src={`http://127.0.0.1:8000${user?.profile_image}`} alt="" className='user-pic'/>
+        <img src={`http://127.0.0.1:8000${user?.profile_image}`} alt="pi" className='user-pic'/>
         {users.map((user)=>(
             <div className='header-card' key={user.id} onClick={() => navigate(`/profile/${user.id}/`)}>
-                <img src={`http://127.0.0.1:8000${user.profile_image}`} alt="" />
+                <img src={`http://127.0.0.1:8000${user.profile_image}`} alt="pi" />
                 <div className="user-info">{user.username}</div>
             </div>
         ))}
