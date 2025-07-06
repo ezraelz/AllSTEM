@@ -11,6 +11,7 @@ const ProfileRoute = () => {
       <Routes>
         <Route index element={<Profile />} />
         <Route path="/posts" element={<ProfilePosts />} />
+        
       </Routes>
     </div>
   )

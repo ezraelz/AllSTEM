@@ -39,7 +39,7 @@ const SignlePostcard = () => {
 
   return (
     <div className='single-post'>
-      <div className="single-post-card">
+        <div className="single-post-card">
         <div className="card-top">
             <img src={`http://127.0.0.1:8000${post?.author_profile_image}`} alt="" />
             <p className='card-title'>{post?.title} <span>By {post?.author_username}</span></p>  
@@ -52,7 +52,7 @@ const SignlePostcard = () => {
             <p>{post?.description}</p>
         </div>
         
-      </div>
+        </div>
         <div className="comments">
             <h2>Comments:</h2>
         </div>
