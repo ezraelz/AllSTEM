@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../utils/axios';
 import './postCard.css';
 import { format } from 'date-fns';
+import { FaComment } from 'react-icons/fa';
 import { useNavigate, useParams } from 'react-router-dom';
 
 interface User{
@@ -70,19 +71,24 @@ const PostCard = () => {
         {loading ? (
             <>
                 {post.map((post)=>(
-                    <div className="card" key={post.title} onClick={()=> navigate(`/posts/detail/${post.id}/`)}>
-                        <div className="card-top">
-                            <img src={`http://127.0.0.1:8000${post.author_profile_image}`} alt="" />
-                            <p className='card-title'>{post.title} <span>By {post.author_username}</span></p>  
-                            <p className='posted_at'>
-                                {format(new Date(post.posted_at), 'PPP')}
-                            </p>
+                    <>
+                        <div className="card" key={post.title} onClick={()=> navigate(`/posts/detail/${post.id}/`)}>
+                            <div className="card-top">
+                                <img src={`http://127.0.0.1:8000${post.author_profile_image}`} alt="" />
+                                <p className='card-title'>{post.title} <span>By {post.author_username}</span></p>  
+                                <p className='posted_at'>
+                                    {format(new Date(post.posted_at), 'PPP')}
+                                </p>
+                            </div>
+                            <div className="card-content">
+                                <img src={`http://127.0.0.1:8000${post.image}`} alt="" />
+                                <p>{post.description}</p>
+                            </div>
                         </div>
-                        <div className="card-content">
-                            <img src={`http://127.0.0.1:8000${post.image}`} alt="" />
-                            <p>{post.description}</p>
+                        <div className="comment">
+                            <button type='button' title='comment'><FaComment/></button>
                         </div>
-                    </div>
+                    </>
                 ))}
             </>
         ) : (
