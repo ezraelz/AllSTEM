@@ -12,6 +12,8 @@ interface User{
     profile_image: string;
 }
 
+const BaseUrl = 'http://127.0.0.1:8000';
+
 const HomeHeader = () => {
     const { id } = useParams();
     const [scrolledLeft, setScrolledLeft] = useState<boolean>(false)
@@ -54,10 +56,10 @@ const HomeHeader = () => {
   return (
     <div className='home-header hide-scrollbar'>
       <div className="home-header-container">
-        <img src={`http://127.0.0.1:8000${user?.profile_image}`} alt="pi" className='user-pic'/>
+        <img src={`${BaseUrl}${user?.profile_image}`} alt="pi" className='user-pic' onClick={() => navigate(`/profile/${user?.id}/`)}/>
         {users.map((user)=>(
             <div className='header-card' key={user.id} onClick={() => navigate(`/profile/${user.id}/`)}>
-                <img src={`http://127.0.0.1:8000${user.profile_image}`} alt="pi" />
+                <img src={`${BaseUrl}${user.profile_image}`} alt="pi" />
                 <div className="user-info">{user.username}</div>
             </div>
         ))}

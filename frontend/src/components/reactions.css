@@ -1,0 +1,18 @@
+.reaction-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: .5em;
+
+}
+.reaction-container .sec{
+    width: 30%;
+    padding: .4em;
+    border-radius: .4em;
+    font-size: 1rem;
+    background: rgba(245, 222, 179, 0);
+    border: 1px solid #424242;
+}

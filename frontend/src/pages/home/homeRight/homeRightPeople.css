@@ -4,6 +4,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   margin-top: 0;
+  padding-left: 1em;
   color: rgb(18, 18, 18);
   overflow-y: auto; /* vertical scroll */
   max-height: 65vh; /* optional: prevents overflowing page */

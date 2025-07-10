@@ -1,7 +1,7 @@
 .nav {
     width: 100%;
     margin: 0;
-    background: linear-gradient(45deg, #ffffff, #f0f0f0, #d9d9d9); /* SlateGray */
+    background: #fff; /* SlateGray */
     display: flex;
     justify-content: center;
     box-shadow: 0 0 4px #c4c4c4;
@@ -28,6 +28,7 @@
     align-items: center;
     font-size: 1.1em;
     font-weight: bold;
+    cursor: pointer;
 }
 .navbar-container .brand span{
     font-size: .8rem;
@@ -57,13 +58,17 @@
 }
 .navbar-middle ul li button{
     border-radius: .3em;
-    border:1px solid rgba(155, 154, 154, 0.977);
+    border:1px solid rgba(32, 112, 137, 0.977);
 }
 .navbar-content ul li button:hover,
 .navbar-middle ul li button:hover {
-    background-color: rgba(63, 63, 63, 0.461);
+    background-color: rgba(28, 124, 146, 0.461);
     color: rgb(224, 133, 91);
     border-radius: 5px;
+}
+.navbar-middle ul li button .link,
+.navbar-content ul li button .link{
+    color: rgb(45, 142, 177);
 }
 .nav-pro-img{
     width: 1.2em;
@@ -76,12 +81,12 @@
 }
 .navbar-content ul li{
     border-radius: 50%;
-    background: #c4c4c4;
+    background: #ebebeb;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: .4em;
+    padding: .3em;
 }
 .navbar-middle ul{
     gap: .2em;

@@ -3,7 +3,7 @@
     padding: 0;
 }
 .home-left-container-nav{
-    background: #fff; 
+    background: #4f70db; 
     padding: .001em;
 }
 .home-left-container ul{
@@ -29,6 +29,7 @@
 }
 .home-left-container ul li button .link{
     text-decoration: none;
+    color: #ffffffd3;
 }
 .home-left-container ul li button .link span{
     font-size: 1.5rem;

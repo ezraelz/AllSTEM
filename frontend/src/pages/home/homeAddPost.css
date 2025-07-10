@@ -1,9 +1,9 @@
 .home-post{
-    width: 90%;
+    width: 95%;
     height: 10%;
     margin-top: 0em;
-    color: rgb(233, 233, 233);
-    padding-top: .1em;
+    color: rgba(233, 233, 233, 0.916);
+    padding-top: .13em;
     margin-left: 1em;
     background: #4f70db;
 }

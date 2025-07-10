@@ -4,15 +4,13 @@
     padding: 0;
 }
 .home-feed .sections{
-    color: aqua;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: start;
     align-items: start;
     text-align: center;
-    margin-top: .3em;
-    gap: .5em;
+    gap: 1.5em;
 }
 .home-feed .sections .section-left,
 .home-feed .section-right{
@@ -25,13 +23,16 @@
     gap: .5em;
     scroll-behavior: smooth;
 }
+.home-feed .section-right{
+    background: rgba(255, 255, 255, 0.578);
+}
 .home-feed .sections .section-left{
     position: sticky;
     top: 5em;
 
 }
 .home-feed .section-middle{
-    width: 48%;
+    width: 45%;
     height: 100%;
     display: flex;
     position: sticky;

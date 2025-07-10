@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import {useParams} from 'react-router-dom';
 import axios from '../../utils/axios';
 import { format } from 'date-fns';
+import './profilePosts.css'
 
 interface Post{
   id: number;
@@ -16,6 +18,7 @@ interface Post{
 const BaseUrl = 'http://127.0.0.1:8000';
 
 const ProfilePosts = () => {
+  const { id } = useParams<{id: string}>();
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState<Post[]>([]);
 
@@ -25,7 +28,7 @@ const ProfilePosts = () => {
       const token = localStorage.getItem('access_token');
       if (!token) return;
       try{
-        const res = await axios.get('/posts/user/posts/', {
+        const res = await axios.get(`/posts/user/posts/${id}`, {
           headers: {Authorization: `Bearer ${token}`}
         });
         setPosts(res.data);

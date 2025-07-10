@@ -7,7 +7,7 @@
     align-items: start;
     text-align: start;
     gap: .1em;
-    background: #6e91ad;
+    background: #ffffffc1;
     border-radius: .5em;
     margin-top: .5em;
     cursor: pointer;
@@ -28,7 +28,7 @@
 }
 .card-top .card-title span{
     font-size: .7em;
-    color: bisque;
+    color: rgb(59, 58, 57);
 }
 .card-top img{
     width: 3em;
@@ -45,12 +45,39 @@
 .card .card-content{
     text-align: justify;
     word-spacing: .01rem;
-    color: #fff;
+    color: #000000;
 }
-.card-content p{
-    padding: 1em;
-}
+
 .card .card-content img{
     width: 100%;
     height: 20em;
+}
+.card-content .card-description{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.read{
+    transition: height .5s ease;
+    padding: 1em;
+}
+.comment{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+}
+.comment button{
+    width: 50%;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.comment input{
+    width: 75%;
+    height: 100%;
+    border: none;
+    outline: none;
+    padding: .4em;
 }

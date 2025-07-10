@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from '../../utils/axios';
 import './profilePhotos.css';
+import { useParams } from 'react-router-dom';
 
 interface Post{
   id: number;
@@ -16,6 +17,7 @@ interface Post{
 const BaseUrl = 'http://127.0.0.1:8000';
 
 const ProfilePhotos = () => {
+  const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [photos, setPhotos] = useState<Post[]>([]);
 
@@ -25,7 +27,7 @@ const ProfilePhotos = () => {
       const token = localStorage.getItem('access_token');
       if (!token) return;
       try{
-        const res = await axios.get('/posts/user/posts/', {
+        const res = await axios.get(`/posts/user/posts/${id}`, {
           headers: {Authorization: `Bearer ${token}`}
         });
         setPhotos(res.data);

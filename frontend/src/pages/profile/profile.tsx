@@ -4,6 +4,8 @@ import './profile.css';
 import ProfilePosts from './profilePosts';
 import ProfileVideos from './profileVideos';
 import ProfilePhotos from './profilePhotos';
+import { useParams } from 'react-router-dom';
+import BackButton from '../../components/backButton';
 
 interface User {
   username: string;
@@ -14,13 +16,14 @@ interface User {
 }
 
 const Profile = () => {
+  const { id } = useParams();
   const [user, setUser] = useState<User>();
   const [activeTab, setActiveTab] = useState<string>('Posts'); // default tab
 
   useEffect(() => {
     const fetchUserData = async () => {
       const token = localStorage.getItem('access_token');
-      const res = await axios.get('/users/me/', {
+      const res = await axios.get(`/users/${id}/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(res.data);
@@ -34,6 +37,7 @@ const Profile = () => {
     { name: 'Videos', value: 'Videos' },
     { name: 'Friends', value: 'Friends' },
     { name: 'Followers', value: 'Followers' },
+    { name: 'Profile', value: 'More' },
   ];
 
   const renderTabs = () => (
@@ -58,6 +62,12 @@ const Profile = () => {
         return <ProfileVideos />;
       case 'Photos':
         return <ProfilePhotos />;
+      case 'Friends':
+        return <ProfilePhotos />;
+      case 'Followers':
+        return <ProfilePhotos />;
+      case 'Profile':
+        return <ProfilePhotos />;
       default:
         return <ProfilePosts />;
     }
@@ -65,6 +75,7 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
+      <BackButton />
       <div className="profile-top">
         <img src={''} alt="" className="profile-bg-img" />
         {user && <img src={`http://127.0.0.1:8000${user.profile_image}`} alt="Profile" />}

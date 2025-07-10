@@ -4,14 +4,12 @@ import Profile from '../pages/profile/profile';
 import SignlePostcard from '../components/signlePostcard';
 
 const Home = lazy(()=> import('../pages/home/home')); 
-const Login = lazy(()=> import('../pages/auth/login')) ;
 
 const PublicRoute = () => {
   return (
     <div>
       <Routes>
         <Route path='/' element={<Home />}/>
-        <Route path='/profile' element={<Profile />} />
         <Route path='/posts/detail/:id' element={<SignlePostcard />} />
       </Routes>
     </div>

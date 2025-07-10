@@ -12,6 +12,9 @@
     width: 40%;
     background: rgb(252, 252, 252);
 }
+.single-post-card .card-content p{
+    padding: 1em;
+}
 .single-post .comments{
     text-align: justify;
     width: 40%;
