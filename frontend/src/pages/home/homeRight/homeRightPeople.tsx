@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../../utils/axios';
 import './homeRightPeople.css';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 interface People{
+    id: number;
     username: string;
     profile_image: string;
     first_name: string;
@@ -15,6 +17,7 @@ const BaseUrl = 'http://127.0.0.1:8000'
 const HomeRightPeople = () => {
     const [loading, setLoading] = useState(false);
     const [people, setPeople] = useState<People[]>([]);
+    const navigate = useNavigate();
 
     useEffect(()=> {
         const fetchPeopleData = async () =>{
@@ -35,21 +38,17 @@ const HomeRightPeople = () => {
         fetchPeopleData();
     }, []);
 
+    if(!loading) return;
+
   return (
     <div className='home-people hide-scrollbar'>
         <h4>Peoples</h4>
-      {loading ? (
-        <>
-            {people.map((p)=>(
-                <div className="people-card" key={p.username}>
-                    <img src={`${BaseUrl}${p.profile_image}`} alt="" />
-                    <p>{p.username}</p>
-                </div>
-            ))}
-        </>
-      ) : (
-        <><p>Loading..</p></>
-      )}
+        {people.map((p)=>(
+            <div className="people-card" key={p.username} onClick={()=> navigate(`/profile/${p.id}`)}>
+                <img src={`${BaseUrl}${p.profile_image}`} alt="" />
+                <p>{p.username}</p>
+            </div>
+        ))}
     </div>
   )
 }

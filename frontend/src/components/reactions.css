@@ -16,3 +16,54 @@
     background: rgba(245, 222, 179, 0);
     border: 1px solid #424242;
 }
+.reaction-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.sec {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.react > button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.emoji-panel {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  display: flex;
+  background: #fff;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.emoji-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.emoji-btn:hover {
+  transform: scale(1.2);
+}
+
+.emoji-btn.active {
+  background-color: #e1f5fe;
+  border-radius: 50%;
+  padding: 4px;
+}

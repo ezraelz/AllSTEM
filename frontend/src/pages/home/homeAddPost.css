@@ -7,6 +7,9 @@
     margin-left: 1em;
     background: #4f70db;
 }
+.home-post .post-container{
+    height: 10%;
+}
 .home-post .post-container form{
     display: flex;
     flex-direction: column;

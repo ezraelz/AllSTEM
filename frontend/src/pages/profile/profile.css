@@ -4,7 +4,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: all .5s ease;
+    transition: all .5s ease-in-out;
+    position: relative;
 }
 .profile-container .profile-top{
     position: relative;
@@ -59,4 +60,24 @@
     justify-content: center;
     position: sticky;
     top: 7em;
+}
+.profile-container .profile-username{
+    position: absolute;
+    top: 5.5em;
+    left: 16em;
+    z-index: 10;
+    text-transform: uppercase;
+    color: rgb(241, 238, 234);
+}
+.profile-container .profile-main-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+.profile-overview{
+    position: fixed;
+    top: 18em;
+    left: 13em;
 }

@@ -29,7 +29,6 @@ interface Post{
 const BaseUrl = 'http://127.0.0.1:8000'
 
 const PostCard = () => {
-    const { id } = useParams();
     const [isClicked, setIsClicked] = useState<number | null>(null);
     const [user, setUser] = useState<User>();
     const [post, setPost] = useState<Post[]>([]);
@@ -103,7 +102,7 @@ const PostCard = () => {
                                 </div>
                                 
                             </div>
-                            <Reactions />
+                            <Reactions postId={post.id}/>
                         </div>
                         
                     </>

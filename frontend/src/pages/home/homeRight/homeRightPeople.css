@@ -34,5 +34,10 @@
   width: 3em;
   height: 3em;
   border-radius: 50%;
-  object-fit: cover; /* ensures image fills the circle neatly */
+  object-fit: cover; 
+  transition: all .5s ease-in-out;
+  overflow: hidden;
+}
+.home-people img:hover{
+  scale: 1.1;
 }

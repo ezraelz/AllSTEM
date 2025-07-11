@@ -69,7 +69,7 @@ const Nav : React.FC  = () => {
         {name: 'Notifications', to: '#', icon: <FaBell />},
         {name: 'Settings', 
             to: '/settings', 
-            icon: <FaUser/>,
+            icon: isLoggedIn ? <img src={`${BaseUrl}${user?.profile_image}`} alt="" className='nav-pro-img' /> : <FaUser/>,
             
         },
     ]
@@ -78,7 +78,8 @@ const Nav : React.FC  = () => {
         if (token) setIsLoggedIn(true);
         else setIsLoggedIn(false);
     }, [location.pathname, setIsLoggedIn]); 
-    if (!loading) return ;
+
+    if (!loading) return;
     
   return (
     <div className={scrolled ? 'nav small' : 'nav'}>

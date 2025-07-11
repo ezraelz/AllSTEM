@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const HomeRightGroup = () => {
+  const [loading, setLoading] = useState(false);
+  const [groups, setGroups] = useState();
+
   return (
     <div>
-      G..
+      
     </div>
   )
 }

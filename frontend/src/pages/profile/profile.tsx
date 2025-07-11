@@ -6,6 +6,7 @@ import ProfileVideos from './profileVideos';
 import ProfilePhotos from './profilePhotos';
 import { useParams } from 'react-router-dom';
 import BackButton from '../../components/backButton';
+import ProfileOverview from './profileOverview';
 
 interface User {
   username: string;
@@ -79,6 +80,7 @@ const Profile = () => {
       <div className="profile-top">
         <img src={''} alt="" className="profile-bg-img" />
         {user && <img src={`http://127.0.0.1:8000${user.profile_image}`} alt="Profile" />}
+        <h4 className='profile-username'>{user?.username}</h4>
       </div>
 
       <div className="profile-content">
@@ -86,6 +88,7 @@ const Profile = () => {
           {renderTabs()}
         </div>
         <div className="profile-main-content">
+          <ProfileOverview />
           {renderActiveTab()}
         </div>
       </div>
