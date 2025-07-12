@@ -1,0 +1,25 @@
+.friend-follow{
+    position: absolute;
+    top: 6.9em;
+    left: 22em;
+    z-index: 20;
+}
+.friend-follow .button-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+}
+.friend-follow button{
+    background: none;
+    border: none;
+    padding: .1em .1em;
+    
+    color: #fff;
+    cursor: pointer;
+}
+.friend-follow button:hover{
+    border-bottom: 1px solid #fff;
+    color: aqua;
+}

@@ -45,7 +45,7 @@ const HomeRightPeople = () => {
         <h4>Peoples</h4>
         {people.map((p)=>(
             <div className="people-card" key={p.username} onClick={()=> navigate(`/profile/${p.id}`)}>
-                <img src={`${BaseUrl}${p.profile_image}`} alt="" />
+                <img src={`${p.profile_image}`} alt="" />
                 <p>{p.username}</p>
             </div>
         ))}

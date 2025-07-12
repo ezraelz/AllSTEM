@@ -1,6 +1,7 @@
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import axios from '../../utils/axios';
 import './homeAddPost.css';
+import { FaMinus, FaPlus } from 'react-icons/fa';
 
 interface Form{
     title: string;
@@ -10,6 +11,7 @@ interface Form{
 }
 
 const HomeAddPost = () => {
+    const [clicked, setClicked] = useState(false);
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState<Form>({
@@ -49,18 +51,25 @@ const HomeAddPost = () => {
             })
             if (fileInputRef.current) fileInputRef.current.value = '';
         } catch {
-            
             console.log('Error Adding Post!')
         }
 
     }
 
+    const handleClick = () => {
+        setClicked(!clicked);
+    }
 
   return (
-    <div className='home-post'>
+    <div className='home-post' >
       <div className="post-container">
-        <h3>Reflect Something</h3>
-        <form onSubmit={handlePost}>
+        <h3>
+            <button className={clicked ? 'backward' : 'forward'} onClick={handleClick}>
+                {clicked ? <FaMinus/> : <FaPlus /> }
+            </button>
+            Reflect Something
+        </h3>
+        <form onSubmit={handlePost} className={clicked ? 'show' : ''}>
             <input 
                 type="text" 
                 placeholder='Title'

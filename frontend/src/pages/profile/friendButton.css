@@ -1,0 +1,25 @@
+.friend-button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.friend-button.none {
+  background-color: #007bff;
+  color: white;
+}
+
+.friend-button.pending {
+  background-color: #ffc107;
+  color: black;
+  cursor: default;
+}
+
+.friend-button.friends {
+  background-color: #28a745;
+  color: white;
+  cursor: default;
+}

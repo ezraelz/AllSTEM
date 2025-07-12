@@ -56,10 +56,10 @@ const HomeHeader = () => {
   return (
     <div className='home-header hide-scrollbar'>
       <div className="home-header-container">
-        <img src={`${BaseUrl}${user?.profile_image}`} alt="pi" className='user-pic' onClick={() => navigate(`/profile/${user?.id}/`)}/>
+        <img src={`${user?.profile_image}`} alt="pi" className='user-pic' onClick={() => navigate(`/profile/${user?.id}/`)}/>
         {users.map((user)=>(
             <div className='header-card' key={user.id} onClick={() => navigate(`/profile/${user.id}/`)}>
-                <img src={`${BaseUrl}${user.profile_image}`} alt="pi" />
+                <img src={`${user.profile_image}`} alt="pi" />
                 <div className="user-info">{user.username}</div>
             </div>
         ))}

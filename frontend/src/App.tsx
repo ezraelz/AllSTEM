@@ -9,6 +9,7 @@ import Authenticate from './pages/auth/Authenticate';
 import ProfileRoute from './router/profileRoute';
 import Nav from './components/nav';
 import axios from './utils/axios';
+import Logout from './pages/auth/logout';
 
 const ProtectedRoute = ({ element } : { element: ReactElement}) => {
   const isLoggedin = localStorage.getItem('access_token');
@@ -69,6 +70,7 @@ const App = () => {
             <Route path='/*' element={<ProtectedRoute element={<PublicRoute />}/>}/>
             <Route path='/profile/*' element={<ProtectedRoute element={<ProfileRoute />}/>}/>
             <Route path='/authenticate' element={<Authenticate />} />
+            <Route path='/logout' element={<Logout/>} />
           </Routes>
        
         </Suspense>

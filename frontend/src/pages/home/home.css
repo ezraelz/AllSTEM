@@ -15,7 +15,6 @@
 .home-feed .sections .section-left,
 .home-feed .section-right{
     position: sticky;
-    top: 5em;
     width: 25%;
     height: auto;
     display: flex;
@@ -24,11 +23,12 @@
     scroll-behavior: smooth;
 }
 .home-feed .section-right{
+    top: 5em;
     background: rgba(255, 255, 255, 0.578);
 }
 .home-feed .sections .section-left{
     position: sticky;
-    top: 5em;
+    top: 3.5em;
 
 }
 .home-feed .section-middle{

@@ -38,7 +38,7 @@ const HomeLeftTop = () => {
   return (
     <div className='home-left-top'>
       <div className="home-left-top-container">
-        <img src={`http://127.0.0.1:8000${user?.profile_image}`} alt="" className='home-left-top-pro-img'/>
+        <img src={`${user?.profile_image}`} alt="" className='home-left-top-pro-img'/>
         <input type="search"  title='search' placeholder='Search here' className='home-left-search'/>
       </div>
     </div>

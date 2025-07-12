@@ -69,7 +69,7 @@ const Nav : React.FC  = () => {
         {name: 'Notifications', to: '#', icon: <FaBell />},
         {name: 'Settings', 
             to: '/settings', 
-            icon: isLoggedIn ? <img src={`${BaseUrl}${user?.profile_image}`} alt="" className='nav-pro-img' /> : <FaUser/>,
+            icon: isLoggedIn ? <img src={`${user?.profile_image}`} alt="" className='nav-pro-img' /> : <FaUser/>,
             
         },
     ]

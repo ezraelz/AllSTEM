@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../utils/axios';
 import './homeLeft.css';
-import { FaUserFriends, FaUserPlus, FaUsers } from 'react-icons/fa';
+import { FaAlignLeft, FaCaretSquareLeft, FaUserFriends, FaUserPlus, FaUsers } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
 import { IoIosContacts } from 'react-icons/io';
 import { MdGroups } from 'react-icons/md';
@@ -21,6 +21,7 @@ const HomeLeft = () => {
       {name: 'Followers', link: '/', icon:<FaUserPlus/>},
       {name: 'Groups', link: '/', icon:<MdGroups/>},
       {name: 'Contacts', link: '/', icon:<IoIosContacts/>},
+      {name: 'Logout', link:'/logout', icon:<FaAlignLeft/>}
   ]
 
   const renderActiveTab = ()=> {

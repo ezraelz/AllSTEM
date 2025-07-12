@@ -1,17 +1,38 @@
 .home-post{
     width: 95%;
-    height: 10%;
+    height: auto;
     margin-top: 0em;
     color: rgba(233, 233, 233, 0.916);
-    padding-top: .13em;
     margin-left: 1em;
     background: #4f70db;
+    transition: height .9s ease;
+}
+.home-post h3{
+    display: flex;
+    padding: .5em;
+    gap: 1em;
+}
+.home-post .forward{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(180deg);
+    transition: transform 1s ease;
+}
+.home-post .backward{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-180deg);
+    transition: transform 1s ease;
 }
 .home-post .post-container{
     height: 10%;
 }
 .home-post .post-container form{
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: start;
     align-items: start;
@@ -21,6 +42,12 @@
     color: #374777;
     background: #f6f6f6;
     box-shadow: 0 0 8px #aac7e9;
+    animation: fallD .8s forwards ease;
+    transition: all 1.5s ease;
+}
+.home-post .post-container .show{
+    display: flex;
+    flex-direction: column; 
 }
 .home-post form .post-input{
     width: 95%;
@@ -46,3 +73,12 @@
     color: rgb(240, 240, 240);
 }
 
+@keyframes fallD {
+    0%{
+        opacity: 0;
+        transform: translateY(-4rem);
+    }100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
