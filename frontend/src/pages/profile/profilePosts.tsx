@@ -32,7 +32,6 @@ const ProfilePosts = () => {
           headers: {Authorization: `Bearer ${token}`}
         });
         setPosts(res.data);
-        console.log(res.data);
       }catch(err){
         console.log('error during fetch', err)
       }

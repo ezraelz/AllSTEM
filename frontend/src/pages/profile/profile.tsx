@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import axios from '../../utils/axios';
 import './profile.css';
 import ProfilePosts from './profilePosts';
@@ -8,6 +8,8 @@ import { useParams } from 'react-router-dom';
 import BackButton from '../../components/backButton';
 import FriendFollow from './friendFollow';
 import FriendButton from './FriendButton';
+import { toast } from 'react-toastify';
+import ProfileFriends from './profileFriends';
 
 interface Post{
   id: number;
@@ -32,32 +34,33 @@ interface User {
 
 const Profile = () => {
   const { id } = useParams<{ id: string }>();
+  const [loading, setLoading] = useState<boolean>(false);
   const [posts, setPosts] = useState<Post[]>([]);
   const [photos, setPhotos] = useState<Post[]>([]);
   const [videos, setVideos] = useState<Post[]>([]);
-  const [friends, setFriends] = useState();
+  const [friends, setFriends] = useState([]);
   const [followers, setFollowers] = useState();
   const [user, setUser] = useState<User>();
   const [activeTab, setActiveTab] = useState<string>('Posts'); // default tab
 
-   useEffect(()=> {
-      const fetchData = async () => {
-          const token = localStorage.getItem('access_token');
-          const config = {headers: {Authorization : `Bearer ${token}`}};
+  useEffect(()=> {
+    const fetchData = async () => {
+        const token = localStorage.getItem('access_token');
+        const config = {headers: {Authorization : `Bearer ${token}`}};
 
-          const [
-              postRes, 
-          ] = await Promise.all([
-              axios.get(`/posts/user/posts/${id}`, config)
-          ]);
+        const [
+            postRes, 
+        ] = await Promise.all([
+            axios.get(`/posts/user/posts/${id}`, config)
+        ]);
 
-          const allPosts: Post[] = postRes.data;
-          setPosts(allPosts);
-          setPhotos(allPosts.filter(post => post.image));
-          setVideos(allPosts.filter(post => post.video));
-      }
-      fetchData();
-    }, []);
+        const allPosts: Post[] = postRes.data;
+        setPosts(allPosts);
+        setPhotos(allPosts.filter(post => post.image));
+        setVideos(allPosts.filter(post => post.video));
+    }
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -70,11 +73,27 @@ const Profile = () => {
     fetchUserData();
   }, []);
 
+  useEffect(()=>{
+    const fetchFriendsData = async ()=>{
+      setLoading(true);
+      const token = localStorage.getItem('access_token');
+      try{
+        const res = await axios.get('/users/friend-requests/',{
+        headers: {Authorization: `Bearer ${token}`}});
+        setFriends(res.data);
+        console.log('friends data', res.data);
+      }catch{
+        toast.error('error fetching friends data');
+      }
+    }
+    fetchFriendsData();
+  }, []);
+
   const profile_links = [
     { name: 'Posts', value: 'Posts' , count: posts.length},
     { name: 'Photos', value: 'Photos', count: photos.length},
     { name: 'Videos', value: 'Videos' , count: videos.length},
-    { name: 'Friends', value: 'Friends', count: posts.length },
+    { name: 'Friends', value: 'Friends', count: friends.length },
     { name: 'Followers', value: 'Followers', count: posts.length },
     { name: 'Profile', value: 'More' },
   ];
@@ -105,7 +124,7 @@ const Profile = () => {
       case 'Photos':
         return <ProfilePhotos />;
       case 'Friends':
-        return <ProfilePhotos />;
+        return <ProfileFriends />;
       case 'Followers':
         return <ProfilePhotos />;
       case 'Profile':

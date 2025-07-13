@@ -34,7 +34,7 @@ const FriendButton: React.FC<FriendButtonProps> = ({ targetUserId }) => {
     setLoading(true);
     try {
       const res = await axios.post('/users/friend-request-send/', {
-        to_user: targetUserId,
+        receiver_id: targetUserId,
       }, { headers });
 
       toast.success('Friend request sent!');
