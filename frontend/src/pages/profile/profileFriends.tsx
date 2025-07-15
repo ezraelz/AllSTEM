@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from '../../utils/axios';
-import './profilePhotos.css';
+import './profileFriends.css';
 import { useParams } from 'react-router-dom';
 
 interface Friend{
@@ -59,11 +59,16 @@ const ProfileFriends = () => {
     <div className="friends-requests">
         {requests.length > 0 ? (
             <>
+            <h4>Requests</h4>
             {requests.map((request)=>(
-                <div className="photos" key={request.id}>
+                <div className="request" key={request.id}>
                     <div className="card-content">
                         <img src={`${request.from_user_profile_image}`} alt="" />
                         <p>{request.from_user_username}</p>
+                        <div className="button-group">
+                          <button title='accept' className="accept">Accept</button>
+                          <button title='reject' className="reject">Reject</button>
+                        </div>
                     </div>
                 </div>
             ))}

@@ -1,0 +1,12 @@
+.friends-requests{
+    position: absolute;
+    top: 14em;
+    left: 11em;
+}
+.friends-requests .card-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
