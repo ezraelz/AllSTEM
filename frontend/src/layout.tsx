@@ -13,7 +13,7 @@ const Layout: React.FC<Props> = ({ children, isLoggedIn }) => {
 
   return (
     <>
-      {showNav && <Nav isLoggedIn={isLoggedIn}/>}
+      {showNav && <Nav />}
       {children}
     </>
   );
