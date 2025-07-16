@@ -1,6 +1,7 @@
-import PostCard from '../../components/postCard';
+import { lazy } from 'react';
+const PostCard = lazy(()=> import( '../../components/postCard'));
 import './home.css';
-import HomeAddPost from './homeAddPost';
+const HomeAddPost = lazy(()=> import('./homeAddPost'));
 import HomeHeader from './homeHeader';
 import HomeLeft from './homeLeft';
 import HomeLeftTop from './homeLeftTop';

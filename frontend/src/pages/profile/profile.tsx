@@ -1,15 +1,15 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { lazy, use, useEffect, useState } from 'react';
 import axios from '../../utils/axios';
 import './profile.css';
-import ProfilePosts from './profilePosts';
-import ProfileVideos from './profileVideos';
-import ProfilePhotos from './profilePhotos';
+const ProfilePosts = lazy(()=> import('./profilePosts'));
+const ProfileVideos = lazy(()=> import('./profileVideos'));
+const ProfilePhotos = lazy(()=> import ('./profilePhotos'));
 import { useParams } from 'react-router-dom';
 import BackButton from '../../components/backButton';
 import FriendFollow from './friendFollow';
 import FriendButton from './FriendButton';
 import { toast } from 'react-toastify';
-import ProfileFriends from './profileFriends';
+const ProfileFriends = lazy(()=> import('./profileFriends'));
 
 interface Post{
   id: number;

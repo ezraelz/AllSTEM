@@ -7,9 +7,10 @@ import ScrollToTop from './router/ScrollToTop';
 import { ToastContainer } from 'react-toastify';
 import Authenticate from './pages/auth/Authenticate';
 import ProfileRoute from './router/profileRoute';
-import Nav from './components/nav';
 import axios from './utils/axios';
 import Logout from './pages/auth/logout';
+import Layout from './layout';
+import { NavVisibilityProvider } from './context/NavVisibilityContext';
 
 const ProtectedRoute = ({ element } : { element: ReactElement}) => {
   const isLoggedin = localStorage.getItem('access_token');
@@ -61,20 +62,25 @@ const App = () => {
     checkAuthStatus();
   }, []);
   return (
+    <NavVisibilityProvider>
       <Router>
-        <Nav/>
+        
         <ToastContainer position="bottom-right" autoClose={3000} />
         <Suspense fallback={<div className="main">Loading Page...</div>}>
           <ScrollToTop />
+          <Layout
+            isLoggedIn={!!localStorage.getItem('access_token')}
+          >
           <Routes>
             <Route path='/*' element={<ProtectedRoute element={<PublicRoute />}/>}/>
             <Route path='/profile/*' element={<ProtectedRoute element={<ProfileRoute />}/>}/>
             <Route path='/authenticate' element={<Authenticate />} />
             <Route path='/logout' element={<Logout/>} />
           </Routes>
-       
+          </Layout>
         </Suspense>
       </Router>
+      </NavVisibilityProvider>
   )
 }
 

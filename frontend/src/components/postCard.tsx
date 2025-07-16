@@ -78,34 +78,31 @@ const PostCard = () => {
         {loading ? (
             <>
                 {post.map((post, index)=>(
-                    <>
-                        <div className="card" key={index}>
-                            <div className="card-top">
-                                <img src={`${BaseUrl}${post.author_profile_image}`} alt="" onClick={()=> navigate(`/profile/${post.author}/`)}/>
-                                <p className='card-title' >{post.title} <span onClick={()=> navigate(`/profile/${post.id}/`)}>By {post.author_username}</span></p>  
-                                <p className='posted_at'>
-                                    {format(new Date(post.posted_at), 'PPP')}
-                                </p>
-                            </div>
-                            <div className="card-content">
-                                <img src={`${BaseUrl}${post.image}`} alt="" onClick={()=> navigate(`/posts/detail/${post.id}/`)}/>
-                                <div className="card-description">
-                                    <p 
-                                        className={`read`} 
-                                      onClick={()=> navigate(`/posts/detail/${post.id}/`)}
-                                    >
-                                       { isClicked === index ? post.description : post.description.slice(0, 75)}
-                                    </p>
-                                    <button
-                                        onClick={() => handleClick(index)}>... {isClicked === index ? ' Less': 'Read more'}
-                                    </button>
-                                </div>
-                                
-                            </div>
-                            <Reactions postId={post.id}/>
+                    <div className="card" key={index}>
+                        <div className="card-top">
+                            <img src={`${BaseUrl}${post.author_profile_image}`} alt="" onClick={()=> navigate(`/profile/${post.author}/`)}/>
+                            <p className='card-title' >{post.title} <span onClick={()=> navigate(`/profile/${post.id}/`)}>By {post.author_username}</span></p>  
+                            <p className='posted_at'>
+                                {format(new Date(post.posted_at), 'PPP')}
+                            </p>
                         </div>
-                        
-                    </>
+                        <div className="card-content">
+                            <img src={`${BaseUrl}${post.image}`} alt="" onClick={()=> navigate(`/posts/detail/${post.id}/`)}/>
+                            <div className="card-description">
+                                <p 
+                                    className={`read`} 
+                                    onClick={()=> navigate(`/posts/detail/${post.id}/`)}
+                                >
+                                    { isClicked === index ? post.description : post.description.slice(0, 75)}
+                                </p>
+                                <button
+                                    onClick={() => handleClick(index)}>... {isClicked === index ? ' Less': 'Read more'}
+                                </button>
+                            </div>
+                            
+                        </div>
+                        <Reactions postId={post.id}/>
+                    </div>
                 ))}
             </>
         ) : (
