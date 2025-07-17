@@ -92,16 +92,16 @@ const ProfileFriends = () => {
         {requests.length > 0 ? (
             <>
               {requests.map((request)=>(
-                  <div className="request" key={request.id}>
-                      <div className="card-content">
-                          <img src={`${BaseUrl}${request.from_user_profile_image}`} alt="" />
-                          <p>{request.from_user_username}</p>
-                          <div className="button-group">
-                            <button title='accept' className="accept">Accept</button>
-                            <button title='reject' className="reject">Reject</button>
-                          </div>
-                      </div>
-                  </div>
+                <div className="request" key={request.id}>
+                    <div className="card-content">
+                        <img src={`${BaseUrl}${request.from_user_profile_image}`} alt="" />
+                        <p>{request.from_user_username}</p>
+                        <div className="button-group">
+                          <button title='accept' className="accept">Accept</button>
+                          <button title='reject' className="reject">Reject</button>
+                        </div>
+                    </div>
+                </div>
               ))}
             </>
         ) : (
