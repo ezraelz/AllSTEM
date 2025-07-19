@@ -1,21 +1,22 @@
-import React, { lazy, use, useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import axios from '../../utils/axios';
 import './profile.css';
-const ProfilePosts = lazy(()=> import('./profilePosts'));
-const ProfileVideos = lazy(()=> import('./profileVideos'));
-const ProfilePhotos = lazy(()=> import ('./profilePhotos'));
 import { useParams } from 'react-router-dom';
 import BackButton from '../../components/backButton';
 import FriendFollow from './friendFollow';
 import FriendButton from './FriendButton';
 import { toast } from 'react-toastify';
-const ProfileFriends = lazy(()=> import('./profileFriends'));
+import { jwtDecode } from 'jwt-decode';
+import ProfilePosts from './ProfilePosts';
+import ProfileVideos from './ProfileVideos';
+import ProfilePhotos from './ProfilePhotos';
+import ProfileFriends from './profileFriends';
 
-interface Post{
+interface Post {
   id: number;
   author_username: string;
   author_profile_image: string;
-  title:string;
+  title: string;
   description: string;
   image: string;
   video: string;
@@ -34,83 +35,97 @@ interface User {
 
 const Profile = () => {
   const { id } = useParams<{ id: string }>();
-  const [loading, setLoading] = useState<boolean>(false);
   const [posts, setPosts] = useState<Post[]>([]);
   const [photos, setPhotos] = useState<Post[]>([]);
   const [videos, setVideos] = useState<Post[]>([]);
   const [friends, setFriends] = useState([]);
-  const [followers, setFollowers] = useState();
-  const [user, setUser] = useState<User>();
-  const [activeTab, setActiveTab] = useState<string>('Posts'); // default tab
+  const [user, setUser] = useState<User | undefined>();
+  const [activeTab, setActiveTab] = useState<string>('Posts');
+  const [isOwner, setIsOwner] = useState(false);
 
-  useEffect(()=> {
+  const token = localStorage.getItem('access_token');
+
+  useEffect(() => {
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (!id || decoded.user_id === parseInt(id)) {
+        setIsOwner(true);
+      }
+    }
+  }, [id, token]);
+
+  useEffect(() => {
     const fetchData = async () => {
-        const token = localStorage.getItem('access_token');
-        const config = {headers: {Authorization : `Bearer ${token}`}};
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
 
-        const [
-            postRes, 
-        ] = await Promise.all([
-            axios.get(`/posts/user/posts/${id}`, config)
-        ]);
-
+      try {
+        const postRes = await axios.get(`/posts/user/posts/${id}`, config);
         const allPosts: Post[] = postRes.data;
         setPosts(allPosts);
-        setPhotos(allPosts.filter(post => post.image));
-        setVideos(allPosts.filter(post => post.video));
-    }
-    fetchData();
-  }, []);
+        setPhotos(allPosts.filter((post) => post.image));
+        setVideos(allPosts.filter((post) => post.video));
+      } catch (err) {
+        toast.error('Error loading posts');
+      }
+    };
+
+    if (id) fetchData();
+  }, [id, token]);
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const token = localStorage.getItem('access_token');
-      const res = await axios.get(`/users/${id}/`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setUser(res.data);
-    };
-    fetchUserData();
-  }, []);
-
-  useEffect(()=>{
-    const fetchFriendsData = async ()=>{
-      setLoading(true);
-      const token = localStorage.getItem('access_token');
-      try{
-        const res = await axios.get('/users/friend-requests/',{
-        headers: {Authorization: `Bearer ${token}`}});
-        setFriends(res.data);
-        console.log('friends data', res.data);
-      }catch{
-        toast.error('error fetching friends data');
+      try {
+        const res = await axios.get(`/users/${id}/`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setUser(res.data);
+      } catch {
+        toast.error('Error loading user data');
       }
-    }
-    fetchFriendsData();
-  }, []);
+    };
 
-  const profile_links = [
-    { name: 'Posts', value: 'Posts' , count: posts.length},
-    { name: 'Photos', value: 'Photos', count: photos.length},
-    { name: 'Videos', value: 'Videos' , count: videos.length},
-    { name: 'Friends', value: 'Friends', count: friends.length },
-    { name: 'Followers', value: 'Followers', count: posts.length },
+    if (id) fetchUserData();
+  }, [id, token]);
+
+  useEffect(() => {
+    const fetchFriendsData = async () => {
+      if (!isOwner || !token) return;
+
+      try {
+        const res = await axios.get('/users/friend-requests/', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setFriends(res.data);
+      } catch {
+        toast.error('Error fetching friends data');
+      }
+    };
+
+    fetchFriendsData();
+  }, [isOwner, token]);
+
+  const profileLinks = [
+    { name: 'Posts', value: 'Posts', count: posts.length },
+    { name: 'Photos', value: 'Photos', count: photos.length },
+    { name: 'Videos', value: 'Videos', count: videos.length },
+    ...(isOwner ? [{ name: 'Friends', value: 'Friends', count: friends.length }] : []),
+    ...(isOwner ? [{ name: 'Followers', value: 'Followers', count: 0 }] : []),
     { name: 'Profile', value: 'More' },
   ];
 
   const renderTabs = () => (
     <div className="profile-tabs">
-      {profile_links.map((link) => (
-        <>
-          <button
-            key={link.value}
-            className={`button ${activeTab === link.value ? 'active' : ''}`}
-            onClick={() => setActiveTab(link.value)}
-          >
-            {link.name} <span>{link.count}</span>
-          </button>
-          
-        </>
+      {profileLinks.map((link) => (
+        <button
+          key={link.value}
+          className={`button ${activeTab === link.value ? 'active' : ''}`}
+          onClick={() => setActiveTab(link.value)}
+        >
+          {link.name}
+          {'count' in link && <span>{link.count}</span>}
+        </button>
       ))}
     </div>
   );
@@ -126,9 +141,9 @@ const Profile = () => {
       case 'Friends':
         return <ProfileFriends />;
       case 'Followers':
-        return <ProfilePhotos />;
+        return <FriendFollow targetUserId={id ? parseInt(id, 10) : 0} />;
       case 'Profile':
-        return <ProfilePhotos />;
+        return <div className="more-section">Additional Profile Info</div>;
       default:
         return <ProfilePosts />;
     }
@@ -139,15 +154,15 @@ const Profile = () => {
       <BackButton />
       <div className="profile-top">
         <img src={''} alt="" className="profile-bg-img" />
-        {user && <img src={`${user.profile_image}`} alt="Profile" />}
-        <h4 className='profile-username'>{user?.username}</h4>
-        {id && <FriendButton targetUserId={parseInt(id, 10)} />}
+        {user && <img src={user.profile_image} alt="Profile" />}
+        <h4 className="profile-username">{user?.username}</h4>
+        {id && isOwner === false && (
+          <FriendButton targetUserId={parseInt(id, 10)} />
+        )}
       </div>
 
       <div className="profile-content">
-        <div className="profile-nav">
-          {renderTabs()}
-        </div>
+        <div className="profile-nav">{renderTabs()}</div>
         <div className="profile-main-content">
           {renderActiveTab()}
         </div>

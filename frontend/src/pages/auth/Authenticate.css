@@ -1,4 +1,5 @@
-.authenticate{
+/* AUTHENTICATION LAYOUT */
+.authenticate {
     width: 100%;
     height: 100vh;
     margin: 0;
@@ -7,8 +8,12 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    background: #ffffff;
+    overflow: hidden;
 }
-.authenticate .side-section{
+
+/* SIDE SECTION (LEFT PANEL) */
+.authenticate .side-section {
     position: relative;
     width: 50%;
     height: 100%;
@@ -16,32 +21,41 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #fff;
+    background: #3d7eda;
     z-index: 1;
+    overflow: hidden;
 }
-.authenticate .side-section::after{
+
+.authenticate .side-section::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #f0f0f0f7;
-    clip-path: polygon(0 50%, 50% 0%, 100% 100%);
+    background: #ffffff;
+    clip-path: polygon(100% 50%, 50% 10%, 10% 80%, 10% 50%);
     z-index: 0;
 }
-.authenticate h1{
-    color: #536fcd;
+
+.authenticate .side-section h1 {
+    color: #edd5ac;
     z-index: 2;
 }
-.side-section img{
+
+.authenticate .side-section img {
     width: 10em;
     height: 10em;
-    z-index: inherit;
-}.side-section span{
-    z-index: inherit;
+    z-index: 2;
 }
-.authenticate .container{
+
+.authenticate .side-section span {
+    z-index: 2;
+}
+
+/* FORM CONTAINER (RIGHT PANEL) */
+.authenticate .container {
+    position: relative;
     width: 50%;
     height: 100%;
     display: flex;
@@ -49,41 +63,75 @@
     justify-content: center;
     align-items: center;
     gap: 2em;
-    background: #64a3f4;
+    color: #000;
+    background: #f7f7f7;
+    z-index: 1;
+    overflow: hidden;
 }
-.authenticate .container::after{
+
+.authenticate .container::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #1c539a;
-    clip-path: polygon(100% 100%,0% 50%,0% 50%);
+    background: #3278d4;
+    clip-path: polygon(100% 100%, 0% 100%, 0% 80%);
     z-index: 0;
 }
-.authenticate .container .header{
+
+/* HEADER BUTTON GROUP */
+.authenticate .container .header {
     width: 50%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 1em;
+    z-index: 2;
 }
-.authenticate .header .button{
+
+.authenticate .header .button {
     width: 50%;
-    padding: .5em;
+    padding: 0.5em;
     background: none;
-    border-radius: .5em;
+    border-radius: 0.5em;
     font-weight: 600;
     cursor: pointer;
-    color: #efefef;
-    border: 1px solid #ffffff;
+    color: #000;
+    border: 1px solid #2788e2;
+    transition: background 0.3s ease, color 0.3s ease;
 }
-.header .button:hover{
-    background: #fff;
-    color: #405ec0;
+
+.authenticate .header .button:hover,
+.authenticate .header .button.active {
+    background: #44a8cd;
+    color: #fafafa;
 }
-.button.active{
+
+.authenticate .header .button.active {
     background: #8dd0d8;
+}
+
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 768px) {
+    .authenticate {
+        flex-direction: column;
+    }
+
+    .authenticate .side-section,
+    .authenticate .container {
+        width: 100%;
+        height: 50%;
+    }
+
+    .authenticate .container .header {
+        width: 80%;
+    }
+
+    .authenticate .side-section img {
+        width: 8em;
+        height: 8em;
+    }
 }

@@ -87,7 +87,11 @@ const PostCard = () => {
                             </p>
                         </div>
                         <div className="card-content">
-                            <img src={`${BaseUrl}${post.image}`} alt="" onClick={()=> navigate(`/posts/detail/${post.id}/`)}/>
+                            {post.image ? 
+                            <>
+                                <img src={`${BaseUrl}${post.image}`} alt="" onClick={()=> navigate(`/posts/detail/${post.id}/`)}/>
+                            </> : 
+                            <></>}
                             <div className="card-description">
                                 <p 
                                     className={`read`} 

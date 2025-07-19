@@ -16,22 +16,23 @@
     border: none;
     background: none;
     outline: none;
-    color: #fff;
+    color: #1a1a1a;
     border-bottom: 1px solid #d7a57e;
 }
 .login-container input::placeholder{
-    color: aliceblue;
+    color: rgba(22, 22, 22, 0.788);
 }
 .login-container button{
     border: none;
-    color: #fff;
+    color: #2bb5d7;
     background: none;
     border-radius: .5em;
     cursor: pointer;
     padding: .6em;
     width: 42%;
+    transition: all .5s ease;
 }
-.login-container button:hover{
-    background: #fff;
+.login-container button:hover, .active{
+    background: #7adec0;
     color: blue;
 }

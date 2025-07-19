@@ -1,12 +1,105 @@
-.friends-requests{
-    position: absolute;
-    top: 14em;
-    left: 11em;
+.requests {
+    
+    padding: 1em;
+    border-radius: 0.5em;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 30em;
+    width: 100%;
 }
-.friends-requests .card-content{
+
+.requests h4 {
+    margin-bottom: 1em;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.requests .request {
+    margin-bottom: 1em;
+    padding: 0.8em;
+    background: #f5f7fa;
+    border-radius: 0.5em;
+    border: 1px solid #ddd;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    gap: .5em;
+}
+
+.profile-friends-status .requests .card-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     gap: 1em;
+}
+
+.profile-friends-status .requests img {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.requests .card-content p {
+    flex: 1;
+    font-weight: 500;
+    color: #333;
+}
+
+.requests .button-group {
+    display: flex;
+    gap: 0.5em;
+}
+
+.requests .accept,
+.requests .reject {
+    padding: 0.3em 0.8em;
+    border: none;
+    border-radius: 0.3em;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.requests .accept {
+    background-color: #4caf50;
+    color: white;
+}
+
+.requests .accept:hover {
+    background-color: #3e9242;
+}
+
+.requests .reject {
+    background-color: #f44336;
+    color: white;
+}
+
+.requests .reject:hover {
+    background-color: #d32f2f;
+}
+
+.sent-request .sent-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: .5em;
+    padding: .3em;
+    text-transform: capitalize;
+}
+.sent-request .sent-card img{
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+}
+.profile-friend .request-buttons button{
+    background: none;
+    border: none;
+    padding: .5em;
+    border-radius: .2rem;
+    width: 5em;
+}
+.profile-friend .request-buttons .active-tab{
+    background: #a3d8a6;
+    color: #606d60;
 }

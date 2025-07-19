@@ -10,7 +10,7 @@
     top: 0;
 }
 .navbar-container {
-    padding: 0 2em;
+    padding: 0 4em;
     width: 100%;
     display: flex;
     justify-content: space-between; /* Spread brand and nav */
